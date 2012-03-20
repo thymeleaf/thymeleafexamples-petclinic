@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: header"></head>
+
+
+<body>
+
+<div id="main">
+
+<h2>Owner Information</h2>
+
+  <table th:object="${owner}">
+    <tr>
+      <th>Name</th>
+      <td><b th:text="${owner.firstName + owner.lastName}">John Smith</b></td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td th:text="${owner.address}">48, Oxford Street</td>
+    </tr>
+    <tr>
+      <th>City</th>
+      <td th:text="${owner.city}">London</td>
+    </tr>
+    <tr>
+      <th>Telephone </th>
+      <td th:text="${owner.telephone}">555-555-555</td>
+    </tr>
+  </table>
+  <table class="table-buttons">
+    <tr>
+      <td colspan="2" align="center">
+        <a th:href="@{'/owners/' + ${owner.id} + '/edit'}" href="form.html">Edit Owner</a>
+      </td>
+      <td>
+        <a th:href="@{'/owners/' + ${owner.id} + '/pets/new'}" href="../pets/form.html">Add New Pet</a>
+      </td>
+    </tr>
+  </table>
+
+  <h2>Pets and Visits</h2>
+    <div th:each="pet : ${owner.pets}" th:remove="tag">
+    <table width="94%">
+      <tr>
+        <td valign="top">
+          <table>
+            <tr>
+              <th>Name</th>
+              <td><b th:text="${pet.name}">Bob</b></td>
+            </tr>
+            <tr>
+              <th>Birth Date</th>
+              <td th:text="${#dates.format(pet.birthDate, 'yyyy-MM-dd')}">2000-01-02</td>
+            </tr>
+            <tr>
+              <th>Type</th>
+              <td th:text="${pet.type.name}">Dog</td>
+            </tr>
+          </table>
+        </td>
+        <td valign="top">
+          <table>
+            <thead>
+              <tr>
+                  <th>Visit Date</th>
+                  <th>Description</th>
+              </tr>
+            </thead>
+              <tr th:each="visit : ${pet.visits}">
+                <td th:text="${#dates.format(visit.date, 'yyyy-MM-dd')}">2000-02-01</td> 
+                <td th:text="${visit.description}">Visit to check temperature. Result: ok</td>
+              </tr>
+            
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table class="table-buttons">
+      <tr>
+        <td>
+          <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/edit'}" href="../pets/form.html">Edit Pet</a>
+        </td>
+        <td></td>
+        <td>
+          <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/visits/new'}" href="../pets/visitForm.html">Add Visit</a>
+        </td>
+        <td></td>
+        <td>
+          <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/visits.atom'}" href="#" rel="alternate" type="application/atom+xml">Atom Feed</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+<div th:substituteby="footer :: footer"></div>
+
+
+</div>
+
+</body>
+
+</html>

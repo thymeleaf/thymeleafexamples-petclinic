@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+
+<body>
+
+<!-- Doctype, head and body added as this file was just a piece of html not a valid html file in the spring mvc petclinic original application -->
+
+<!-- thymeleaf: we have converted the file into a valid html one so that
+we can open it in a browser -->
+
+  <table class="footer" th:fragment="footer">
+    <tr>
+      <td><a th:href="@{/}" href="welcome.html">Home</a></td>
+      <td align="right"><img th:src="@{/static/images/springsource-logo.png}" src="../../images/springsource-logo.png" 
+        alt="Sponsored by SpringSource"></img></td>
+    </tr>
+  </table>
+
+
+</body>
+
+</html>
+
