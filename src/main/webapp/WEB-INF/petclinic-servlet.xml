@@ -51,8 +51,10 @@
 				<prop key="org.springframework.transaction.TransactionException">dataAccessFailure</prop>
 			</props>
 		</property>
-        <!-- thymeleaf: we add the default view to be able to process a
-        thymeleaf template when any unexpected error arises -->
+        <!-- 
+            - [THYMELEAF] We add the default view to be able to process a
+            - thymeleaf template when any unexpected error arises 
+        -->
         <property name="defaultErrorView" value="uncaughtException"></property>
 	</bean>
 
@@ -80,9 +82,24 @@
 		- negotiating view resolver.
 	 -->
 	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1" />
-	
-    <!-- thymeleaf: We replace the org.springframework.web.servlet.view.InternalResourceViewResolver 
-    view resolver with thymeleaf view resolver -->
+
+
+    <!-- 
+        - [THYMELEAF] We replace the org.springframework.web.servlet.view.InternalResourceViewResolver 
+        - view resolver with thymeleaf view resolver 
+    -->
+    <!--
+
+        - This bean configures the 'prefix' and 'suffix' properties of
+        - InternalResourceViewResolver, which resolves logical view names
+        - returned by Controllers. For example, a logical view name of "vets"
+        - will be mapped to "/WEB-INF/jsp/vets.jsp".
+    -->
+    <!--  
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"  
+        p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" p:order="2">
+    </bean> 
+    --> 
     <bean id="templateResolver" 
         class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
         <property name="prefix" value="/WEB-INF/thymeleaf/" />
@@ -97,22 +114,8 @@
     <bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine" />
     </bean>    
-    <!--  -->
-
-    <!--
-
-        - This bean configures the 'prefix' and 'suffix' properties of
-        - InternalResourceViewResolver, which resolves logical view names
-        - returned by Controllers. For example, a logical view name of "vets"
-        - will be mapped to "/WEB-INF/jsp/vets.jsp".
-    -->
-<!--     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"  -->
-<!--     p:prefix="/WEB-INF/jsp/" -->
-<!--             p:suffix=".jsp" p:order="2"> -->
-<!--     </bean> -->
-    
-
-
+   
+   
 	<!--
 		- The AtomView rendering a Atom feed of the visits
 	 -->

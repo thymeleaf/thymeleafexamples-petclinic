@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="header :: header"></head>
+    <!-- 
+        - [THYMELEAF] In this page, we have removed the java code and converted the file into a valid HTML one 
+    -->
 
-<!-- thymeleaf: in this page, we have removed the java code and converted the file into a valid html one -->
-
-<body>
-
-<div id="main">
-
-<h2>Data access failure: <span th:remove="tag" th:text="${exception.message}">There has been an error</span></h2>
-<p/>
-
-<span th:remove="tag" 
-    th:each="ste : ${exception.stackTrace}" th:text="${'at ' + ste.toString()}">This should be the exception stacktrace</span>
-
-<p/>
-<br/>
-
-<a th:href="@{'/'}" href="welcome.html">Home</a>
-
-<div th:substituteby="footer :: footer"></div>
-
-</div>
-
-</body>
-
+    <head th:substituteby="layout :: header">
+    </head>
+    <body>
+        <div id="main">
+            <h2>Data access failure: <span th:remove="tag" th:text="${exception.message}">There has been an error</span></h2>
+            
+            <p>
+                <span th:remove="tag" 
+                    th:each="ste : ${exception.stackTrace}" 
+                    th:text="${'at ' + ste.toString()}">This should be the exception stacktrace</span>
+            <p/>
+            
+            <br/>
+            
+            <a th:href="@{'/'}" href="welcome.html">Home</a>
+            
+            <div th:substituteby="layout :: footer">
+            </div>
+        </div>
+    </body>
 </html>

@@ -12,7 +12,7 @@
 	-->
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>petclinic-tl.root</param-value>
+		<param-value>thymeleafexamples-petclinic</param-value>
 	</context-param>
 	
 	
@@ -161,14 +161,18 @@
 		<session-timeout>10</session-timeout>
 	</session-config>
 
-<!-- thymeleaf: remove the default error page as we want to
-	execute a thymeleaf template in such a case so we configure it
-	in the petclinic-servlet.xml as a default error view-->
-<!-- 	<error-page> -->
-<!-- 		<exception-type>java.lang.Exception</exception-type> -->
-		<!-- Displays a stack trace -->
-<!-- 		<location>/WEB-INF/jsp/uncaughtException.jsp</location> -->
-<!-- 	</error-page> -->
+    <!-- 
+        - [THYMELEAF] Remove the default error page as we want to
+	   - execute a Thymeleaf template in such a case so we configure it
+	   - in the petclinic-servlet.xml as a default error view
+    -->
+    <!-- Displays a stack trace -->
+    <!-- 
+ 	<error-page> 
+ 		<exception-type>java.lang.Exception</exception-type> 
+		<location>/WEB-INF/jsp/uncaughtException.jsp</location> 
+ 	</error-page> 
+    -->
 
 	<!-- eliminate welcome files -->
 	<!-- useful for Servlet 3 container (Tomcat 7 and Jetty 6) -->

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 
+    - [THYMELEAF] This file replaces header and footer files
+    - Doctype, head and body added as this file was just a piece of HTML not a valid 
+    - HTML file in the original spring mvc petclinic application
+    - Now, we can open it in a browser 
+-->
+
+    <head th:fragment="header">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link rel="stylesheet" th:href="@{/static/styles/petclinic.css}" href="../../styles/petclinic.css" type="text/css"/>
+      <title>PetClinic :: a Spring Framework demonstration</title>  
+    </head>
+
+    <body>
+    
+        <table class="footer" th:fragment="footer">
+            <tr>
+              <td><a th:href="@{/}" href="welcome.html">Home</a></td>
+              <td align="right"><img th:src="@{/static/images/springsource-logo.png}" src="../../images/springsource-logo.png" 
+                alt="Sponsored by SpringSource"></img></td>
+            </tr>
+        </table>
+    </body>
+</html>
+

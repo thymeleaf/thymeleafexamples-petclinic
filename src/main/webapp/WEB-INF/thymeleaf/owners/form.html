@@ -1,69 +1,61 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="header :: header"></head>
-
-
-<body>
-
-<div id="main">
-
-
-
-<h2 th:text="${owner.new} ? 'New Owner:' : 'Owner:'">New Owner:</h2>
-<form th:object="${owner}" action="show.html"
-    th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" 
-    th:method="${owner.new} ? 'post' : 'put'" >
-  <table>
-    <tr>
-      <th>
-        First Name: <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="errors"></span>
-        <br/>
-        <input type="text" th:field="*{firstName}" size="30" maxlength="80"/>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        Last Name: <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="errors">error</span>
-        <br/>
-        <input type="text" th:field="*{lastName}" size="30" maxlength="80"/>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        Address: <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="errors"></span>
-        <br/>
-        <input type="text" th:field="*{address}" size="30" maxlength="80"/>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        City: <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="errors">error</span>
-        <br/>
-        <input type="text" th:field="*{city}" size="30" maxlength="80"/>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        Telephone: <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" class="errors"></span>
-        <br/>
-        <input type="text" th:field="*{telephone}" size="20" maxlength="20"/>
-      </th>
-    </tr>
-    <tr>
-      <td>
-            <p th:if="${owner.new}" class="submit"><input type="submit" value="Add Owner"/></p>
-            <p th:unless="${owner.new}" class="submit"><input type="submit" value="Update Owner"/></p>
-      </td>
-    </tr>
-  </table>
-</form>
-
-<div th:substituteby="footer :: footer"></div>
-
-
-</div>
-
-</body>
-
+    <head th:substituteby="layout :: header"></head>
+    <body>
+        <div id="main">
+            <h2 th:text="${owner.new} ? 'New Owner:' : 'Owner:'">New Owner:</h2>
+            <form th:object="${owner}" action="show.html"
+                th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" 
+                th:method="${owner.new} ? 'post' : 'put'" >
+                <table>
+                    <tr>
+                        <th>
+                            First Name: <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" 
+                                class="errors"></span>
+                            <br/>
+                            <input type="text" th:field="*{firstName}" size="30" maxlength="80"/>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Last Name: <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" 
+                                class="errors">error</span>
+                            <br/>
+                            <input type="text" th:field="*{lastName}" size="30" maxlength="80"/>
+                      </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Address: <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="errors"></span>
+                            <br/>
+                            <input type="text" th:field="*{address}" size="30" maxlength="80"/>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            City: <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" 
+                                class="errors">error</span>
+                            <br/>
+                            <input type="text" th:field="*{city}" size="30" maxlength="80"/>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Telephone: <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" 
+                                class="errors"></span>
+                            <br/>
+                            <input type="text" th:field="*{telephone}" size="20" maxlength="20"/>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p th:if="${owner.new}" class="submit"><input type="submit" value="Add Owner"/></p>
+                            <p th:unless="${owner.new}" class="submit"><input type="submit" value="Update Owner"/></p>
+                        </td>
+                    </tr>
+              </table>
+            </form>
+            <div th:substituteby="layout :: footer"></div>
+        </div>
+    </body>
 </html>

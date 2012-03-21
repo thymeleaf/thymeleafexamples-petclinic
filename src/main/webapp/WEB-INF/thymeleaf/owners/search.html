@@ -1,41 +1,28 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="header :: header"></head>
-
-
-<body>
-
-<div id="main">
-
-
-<h2>Find Owners:</h2>
-
-<!-- <spring:url value="/owners" var="formUrl"/> -->
-<form th:action="@{/owners}" action="list.html" th:object="${owner}" method="get">
-  <table>
-    <tr>
-      <th>
-        Last Name:  <span th:errors="*{lastName}" class="errors">name is required!</span>
-        <br/> 
-        <input type="text" th:field="*{lastName}" size="30" maxlength="80" />
-      </th>
-    </tr>
-    <tr>
-      <td><p class="submit"><input type="submit" value="Find Owners"/></p></td>
-    </tr>
-  </table>
-</form>
-
-<br/>
-<a th:href="@{/owners/new}" href="form.html">Add Owner</a>
-
-
-<div th:substituteby="footer :: footer"></div>
-
-
-</div>
-
-</body>
-
+    <head th:substituteby="layout :: header"></head>
+    <body>
+        <div id="main">
+            <h2>Find Owners:</h2>
+            <form th:action="@{/owners}" action="list.html" th:object="${owner}" method="get">
+                <table>
+                    <tr>
+                        <th>
+                            Last Name:  <span th:errors="*{lastName}" class="errors">name is required!</span>
+                            <br/> 
+                            <input type="text" th:field="*{lastName}" size="30" maxlength="80" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="submit"><input type="submit" value="Find Owners"/></p>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <a th:href="@{/owners/new}" href="form.html">Add Owner</a>
+            <div th:substituteby="layout :: footer"></div>
+        </div>
+    </body>
 </html>

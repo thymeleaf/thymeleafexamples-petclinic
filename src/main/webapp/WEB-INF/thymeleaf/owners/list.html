@@ -1,54 +1,46 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head th:substituteby="header :: header"></head>
-
-
-<body>
-
-<div id="main">
-
-
-<h2>Owners:</h2>
-
-<table>
-  <thead>
-    <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>Telephone</th>
-        <th>Pets</th>
-    </tr>
-  </thead>
-    <tr th:each="owner : ${selections}">
-      <td>
-          <a th:href="@{'/owners/' + ${owner.id}}" href="show.html" th:text="${owner.firstName + owner.lastName}">Mary Smith</a>
-      </td>
-      <td th:text="${owner.address}">45, Oxford Street</td>
-      <td th:text="${owner.city}">Cambridge</td>
-      <td th:text="${owner.telephone}">555-555-555</td>
-      <td>
-        <span th:remove="tag" th:each="pet : ${owner.pets}" th:utext="${pet.name + '&nbsp;'}">
-          Bob
-        </span>
-      </td>
-    </tr>
-    <tr th:remove="all">
-        <td><a href="show.html">John Moore</a></td>
-        <td>78, NY Street</td>
-        <td>Washington</td>
-        <td>333-333-333</td>
-        <td><span>Roger</span><br/><span>Peggy</span></td>
-    </tr>
-</table>
-
-<div th:substituteby="footer :: footer"></div>
-
-
-</div>
-
-</body>
-
+    <head th:substituteby="layout :: header"></head>
+    <body>
+        <div id="main">
+            <h2>Owners:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Telephone</th>
+                        <th>Pets</th>
+                    </tr>
+                </thead>
+                <tr th:each="owner : ${selections}">
+                    <td>
+                        <a th:href="@{'/owners/' + ${owner.id}}" href="show.html" 
+                            th:text="${owner.firstName + owner.lastName}">Mary Smith</a>
+                    </td>
+                    <td th:text="${owner.address}">45, Oxford Street</td>
+                    <td th:text="${owner.city}">Cambridge</td>
+                    <td th:text="${owner.telephone}">555-555-555</td>
+                    <td>
+                        <span th:remove="tag" th:each="pet : ${owner.pets}" th:utext="${pet.name + '&nbsp;'}">
+                            Bob
+                        </span>
+                    </td>
+                </tr>
+                <tr th:remove="all">
+                    <td><a href="show.html">John Moore</a></td>
+                    <td>78, NY Street</td>
+                    <td>Washington</td>
+                    <td>333-333-333</td>
+                    <td>
+                        <span>Roger</span>
+                        <br/>
+                        <span>Peggy</span>
+                    </td>
+                </tr>
+            </table>
+            <div th:substituteby="layout :: footer"></div>
+        </div>
+    </body>
 </html>
