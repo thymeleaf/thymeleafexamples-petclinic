@@ -1,5 +1,5 @@
 ==========================================================================
-=== Spring PetClinic Sample Application
+=== Spring PetClinic Sample Application with Thymeleaf view layer
 ==========================================================================
 
 @author Ken Krebs
@@ -8,6 +8,8 @@
 @author Costin Leau
 @author Sam Brannen
 @author Scott Andrews
+
+@author Soraya Sanchez (Thymeleaf view layer)
 
 ==========================================================================
 === Data Access Strategies
