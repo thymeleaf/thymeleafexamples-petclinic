@@ -1,68 +1,53 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head th:substituteby="header :: header"></head>
-
-
-<body>
-
-<div id="main">
-
-
-<h2 th:text="${pet.new} ? 'New Pet' : 'Pet'">Pet</h2>
-
-<b>Owner:</b> <span th:remove="tag" th:text="${pet.owner.firstName + ' ' + pet.owner.lastName}"></span> 
-<br/>
-<form th:object="${pet}" th:method="${pet.new} ? 'post' : 'put'" 
-    th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" action="#">
-    
-  <table>
-    <tr>
-      <th>
-        Name: <span th:errors="*{name}" class="errors" th:if="${#fields.hasErrors('name')}">error</span>
-        <br/>
-        <input type="text" th:field="*{name}" size="30" maxlength="30"/>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        Birth Date: <span th:errors="*{birthDate}" class="errors" th:if="${#fields.hasErrors('birthDate')}">error</span>
-        <br/>
-        <input type="text" th:field="*{birthDate}" size="10" maxlength="10"/> (yyyy-mm-dd)
-      </th>
-    </tr>
-    <tr>
-      <th>
-        Type: <span th:errors="*{type}" class="errors" th:if="${#fields.hasErrors('type')}">error</span>
-        <br/>
-        <select th:field="*{type}">
-            <option th:each="t : ${types}" th:text="${t}" th:value="${t}" >option</option>
-        </select>
-      </th>
-    </tr>
-    <tr>
-      <td>
-            <p class="submit" th:if="${pet.new}"><input type="submit" value="Add Pet"/></p>
-            <p class="submit" th:unless="${pet.new}"><input type="submit" value="Update Pet"/></p>
-      </td>
-    </tr>
-  </table>
-</form>
-
-  <form method="post" th:if="${!pet.new}" th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" 
-  action="#">
-    <!-- This hidden should be removed but thymeleaf does not generate it at this time and we need it in order to 
-    be able to use delete method (method should be delete)-->
-    <input type="hidden" name="_method" value="delete"/>
-    <p class="submit"><input type="submit" value="Delete Pet"/></p>
-  </form>
-
-<div th:substituteby="footer :: footer"></div>
-
-
-</div>
-
-</body>
-
+    <head th:substituteby="layout :: header"></head>
+    <body>
+        <div id="main">
+            <h2 th:text="${pet.new} ? 'New Pet' : 'Pet'">Pet</h2>
+            <b>Owner:</b> <span th:remove="tag" th:text="${pet.owner.firstName + ' ' + pet.owner.lastName}"></span> 
+            <br/>
+            <form th:object="${pet}" th:method="${pet.new} ? 'post' : 'put'" 
+                th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" action="#">
+                <table>
+                    <tr>
+                        <th>
+                            Name: <span th:errors="*{name}" class="errors" th:if="${#fields.hasErrors('name')}">error</span>
+                            <br/>
+                            <input type="text" th:field="*{name}" size="30" maxlength="30"/>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Birth Date: <span th:errors="*{birthDate}" class="errors" th:if="${#fields.hasErrors('birthDate')}">error</span>
+                            <br/>
+                            <input type="text" th:field="*{birthDate}" size="10" maxlength="10"/> (yyyy-mm-dd)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Type: <span th:errors="*{type}" class="errors" th:if="${#fields.hasErrors('type')}">error</span>
+                            <br/>
+                            <select th:field="*{type}">
+                                <option th:each="t : ${types}" th:text="${t}" th:value="${t}" >option</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>  
+                            <p class="submit" th:if="${pet.new}"><input type="submit" value="Add Pet"/></p>
+                            <p class="submit" th:unless="${pet.new}"><input type="submit" value="Update Pet"/></p>
+                        </td>
+                    </tr>
+              </table>
+            </form>
+            
+            <form method="delete" th:if="${!pet.new}" 
+                th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" 
+                action="#">
+                <p class="submit"><input type="submit" value="Delete Pet"/></p>
+            </form>
+            
+            <div th:substituteby="layout :: footer"></div>
+        </div>
+    </body>
 </html>

@@ -1,84 +1,74 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="header :: header"></head>
+    <head th:substituteby="header :: header"></head>
+    <body>
 
-
-<body>
-
-<div id="main">
-
-
-<h2 th:text="${visit.new} ? 'New Visit:' : 'Visit:'">Visit</h2>
-
-<form th:object="${visit}" th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}"
-    method="post">
-  <b>Pet:</b>
-  <table width="333">
-    <thead>
-        <tr>
-          <th>Name</th>
-          <th>Birth Date</th>
-          <th>Type</th>
-          <th>Owner</th>
-        </tr>
-    </thead>
-    <tr>
-      <td th:text="${visit.pet.name}">name</td>
-      <td th:text="${#dates.format(visit.pet.birthDate,'yyyy-MM-dd')}">20000101</td>
-      <td th:text="${visit.pet.type.name}">type</td>
-      <td th:text="${visit.pet.owner.firstName + ' ' + visit.pet.owner.lastName}">owner</td>
-    </tr>
-  </table>
-
-  <table width="333">
-    <tr>
-      <th>
-        Date:
-        <br/><span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="errors">error</span>
-      </th>
-      <td>
-        <input type="text" th:field="*{date}" size="10" maxlength="10"/> (yyyy-mm-dd)
-      </td>
-    </tr>
-    <tr>
-      <th valign="top">
-        Description:
-        <br/><span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="errors">error</span>
-      </th>
-      <td>
-        <textarea th:field="*{description}" rows="10" cols="25"></textarea>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input type="hidden" name="petId" th:value="${visit.pet.id}"/>
-        <p class="submit"><input type="submit" value="Add Visit"/></p>
-      </td>
-    </tr>
-  </table>
-</form>
-
-<br/>
-<b>Previous Visits:</b>
-<table width="333">
-  <tr>
-    <th>Date</th>
-    <th>Description</th>
-  </tr>
-      <tr th:if="${!visit.new}" th:each="visit : ${visit.pet.visits}">
-        <td th:text="${#dates.format(visit.date,'yyyy-MM-dd')}"></td>
-        <td th:text="${visit.description}">description</td>
-      </tr>
-      
-</table>
-
-
-<div th:substituteby="footer :: footer"></div>
-
-
-</div>
-
-</body>
-
+        <div id="main">
+        
+        
+            <h2 th:text="${visit.new} ? 'New Visit:' : 'Visit:'">Visit</h2>
+            
+            <form th:object="${visit}" th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}"
+                method="post">
+              <b>Pet:</b>
+              <table width="333">
+                <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Birth Date</th>
+                      <th>Type</th>
+                      <th>Owner</th>
+                    </tr>
+                </thead>
+                <tr>
+                  <td th:text="${visit.pet.name}">name</td>
+                  <td th:text="${#dates.format(visit.pet.birthDate,'yyyy-MM-dd')}">20000101</td>
+                  <td th:text="${visit.pet.type.name}">type</td>
+                  <td th:text="${visit.pet.owner.firstName + ' ' + visit.pet.owner.lastName}">owner</td>
+                </tr>
+              </table>
+            
+              <table width="333">
+                <tr>
+                  <th>
+                    Date:
+                    <br/><span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="errors">error</span>
+                  </th>
+                  <td>
+                    <input type="text" th:field="*{date}" size="10" maxlength="10"/> (yyyy-mm-dd)
+                  </td>
+                </tr>
+                <tr>
+                  <th valign="top">
+                    Description:
+                    <br/><span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="errors">error</span>
+                  </th>
+                  <td>
+                    <textarea th:field="*{description}" rows="10" cols="25"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <input type="hidden" name="petId" th:value="${visit.pet.id}"/>
+                    <p class="submit"><input type="submit" value="Add Visit"/></p>
+                  </td>
+                </tr>
+              </table>
+            </form>
+        
+            <br/>
+            <b>Previous Visits:</b>
+            <table width="333">
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                </tr>
+                <tr th:if="${!visit.new}" th:each="visit : ${visit.pet.visits}">
+                    <td th:text="${#dates.format(visit.date,'yyyy-MM-dd')}"></td>
+                    <td th:text="${visit.description}">description</td>
+                </tr> 
+            </table>
+            <div th:substituteby="footer :: footer"></div>
+        </div>
+    </body>
 </html>
