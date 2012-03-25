@@ -1,44 +1,36 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="header :: header"></head>
-
-
-<body>
-
-<div id="main">
-
-<h2>Veterinarians:</h2>
-
-<table>
-  <thead>
-    <tr>
-    <th>Name</th>
-    <th>Specialties</th>
-    </tr>
-  </thead>
-    <tr th:each="vet : ${vets.vetList}">
-      <td th:text="${vet.firstName + ' ' + vet.lastName}">vet name</td>
-      <td>
-	    <span th:remove="tag" th:each="specialty : ${vet.specialties}" th:text="${specialty.name}">
-          specialty name
-        </span>
-        <span th:remove="tag" th:if="${vet.nrOfSpecialties == 0}">none</span>
-      </td>
-    </tr>
-</table>
-<table class="table-buttons">
-  <tr>
-    <td>
-      <a th:href="@{'/vets.xml'}" href="#">View as XML</a>
-    </td>
-  </tr>
-</table>
-
-<div th:substituteby="footer :: footer"></div>
-
-</div>
-
-</body>
-
+    <head th:substituteby="layout :: header"></head>
+    <body>
+        <div id="main">
+            <h2>Veterinarians:</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Specialties</th>
+                    </tr>
+                </thead>
+                <tr th:each="vet : ${vets.vetList}">
+                      <td th:text="${vet.firstName + ' ' + vet.lastName}">vet name</td>
+                      <td>
+                	    <span th:remove="tag" th:each="specialty : ${vet.specialties}" th:text="${specialty.name}">
+                            specialty name
+                        </span>
+                        <span th:remove="tag" th:if="${vet.nrOfSpecialties == 0}">none</span>
+                    </td>
+                </tr>
+            </table>
+            <table class="table-buttons">
+                <tr>
+                    <td>
+                        <a th:href="@{'/vets.xml'}" href="#">View as XML</a>
+                    </td>
+                </tr>
+            </table>
+            
+            <div th:substituteby="layout :: footer"></div>
+        </div>        
+    </body>
 </html>
