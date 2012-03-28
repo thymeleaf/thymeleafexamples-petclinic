@@ -23,10 +23,12 @@
                 <div th:unless="${exception instanceof T(javax.servlet.ServletException)}" th:remove="tag">
                     <div th:remove="tag" 
                         th:utext="${exception.class + ': ' + exception.message + '&lt;br/&gt;'}">
+                        NullPointerException: null
                     </div>
                     <div th:remove="tag" 
                         th:utext="${'at '+ st + '&lt;br/&gt;'}"    
                         th:each="st : ${stackTrace}" >
+                        at a.b.c.MainController
                     </div>
                 </div>
                 
@@ -37,8 +39,10 @@
             <br/>
             Cookies:
             <br/>
-            <p th:remove="tag" th:each="c : ${cookies}" th:text="${c.name + '=[' + c.value + ']'}"></p>
-            <p/>
+            <p th:remove="tag" th:each="c : ${cookies}" th:text="${c.name + '=[' + c.value + ']'}">
+                user =[anonymous]
+            </p>
+            
             <br/>
             
             <div th:substituteby="layout :: footer"></div>
