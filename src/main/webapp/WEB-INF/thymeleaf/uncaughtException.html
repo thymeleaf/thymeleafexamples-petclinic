@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
     <head th:substituteby="layout :: header"></head>
+    
     <body>
+    
         <div id="main" th:with="exception   = ${#httpServletRequest.getAttribute('javax.servlet.error.exception')},
                                 class       = ${exception.class},
                                 stacktrace  = ${exception.stackTrace},
                                 cookies     = ${#httpServletRequest.cookies}">
+                                
             <h2>Internal error</h2>
-            <p/>
             
             <div th:if="${exception != null}" th:remove="tag">
+            
                 <div th:if="${exception instanceof T(javax.servlet.ServletException)}" th:remove="tag" 
                     th:object="${exception.rootCause}">
                     <div th:remove="tag" th:utext="*{'** Root cause is: ' + message + '&lt;br/&gt;'}"></div>
                     <div th:remove="tag" th:each="st : *{stackTrace}" th:text="${st}"></div>
                 </div>
+                
                 <div th:unless="${exception instanceof T(javax.servlet.ServletException)}" th:remove="tag">
                     <div th:remove="tag" 
                         th:utext="${exception.class + ': ' + exception.message + '&lt;br/&gt;'}">
@@ -24,18 +29,22 @@
                         th:each="st : ${stackTrace}" >
                     </div>
                 </div>
+                
             </div>            
             
             <p th:if="${exception == null}" th:text="'No error information available'"></p>
-                <br/>
-                Cookies:
-                <br/>
-                <p th:remove="tag" th:each="c : ${cookies}" th:text="${c.name + '=[' + c.value + ']'}"></p>
+            
+            <br/>
+            Cookies:
+            <br/>
+            <p th:remove="tag" th:each="c : ${cookies}" th:text="${c.name + '=[' + c.value + ']'}"></p>
             <p/>
             <br/>
             
             <div th:substituteby="layout :: footer"></div>
+            
         </div>
+        
     </body>
 
 </html>
