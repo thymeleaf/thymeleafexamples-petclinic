@@ -5,6 +5,9 @@
     -->
 
     <head th:substituteby="layout :: header">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" href="../../styles/petclinic.css" type="text/css"/>
+        <title>PetClinic :: a Spring Framework demonstration</title>  
     </head>
     <body>
         <div id="main">
@@ -18,10 +21,13 @@
             
             <br/>
             
-            <a th:href="@{'/'}" href="welcome.html">Home</a>
-            
-            <div th:substituteby="layout :: footer">
-            </div>
+            <table th:substituteby="layout :: footer" class="footer">
+                <tr>
+                    <td><a href="welcome.html">Home</a></td>
+                    <td align="right"><img src="../../images/springsource-logo.png" 
+                        alt="Sponsored by SpringSource"></img></td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
