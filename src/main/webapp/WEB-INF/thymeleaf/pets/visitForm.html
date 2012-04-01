@@ -11,7 +11,7 @@
             <form th:object="${visit}" th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}"
                 method="post">
             	<b>Pet:</b>
-              	<table width="333">
+              	<table style="width: 333px;">
 	                <thead>
 	                    <tr>
 	                    	<th>Name</th>
@@ -28,7 +28,7 @@
 	                </tr>
               	</table>
             
-				<table width="333">
+				<table style="width: 333px;">
 				    <tr>
 					    <th>
 					      Date:
@@ -58,7 +58,7 @@
         
             <br/>
             <b>Previous Visits:</b>
-            <table width="333">
+            <table style="width: 333px;">
                 <tr>
                     <th>Date</th>
                     <th>Description</th>
@@ -70,7 +70,7 @@
             </table>
             <table th:substituteby="layout :: footer" class="footer">
                 <tr>
-                    <td><a href="welcome.html">Home</a></td>
+                    <td><a href="../welcome.html">Home</a></td>
                     <td align="right"><img src="../../../images/springsource-logo.png" 
                         alt="Sponsored by SpringSource"></img></td>
                 </tr>
