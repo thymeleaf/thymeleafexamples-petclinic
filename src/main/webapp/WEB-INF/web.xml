@@ -88,37 +88,6 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-	<!--
-		Defines the 'default' servlet (usually for service static resources).
-		Uncomment this in containers (GlassFish) that do not declare this 
-		implicit definition out of the box, or change the name of the servlet mapping 
-		below to the appropriate one.
-     -->
-		
-<!-- 	<servlet> -->
-<!-- 		<servlet-name>default</servlet-name> -->
-<!-- 		<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class> -->
-<!-- 		<init-param> -->
-<!-- 			<param-name>debug</param-name> -->
-<!-- 			<param-value>0</param-value> -->
-<!-- 		</init-param> -->
-<!-- 		<init-param> -->
-<!-- 			<param-name>listings</param-name> -->
-<!-- 			<param-value>false</param-value> -->
-<!-- 		</init-param> -->
-<!-- 		<load-on-startup>1</load-on-startup> -->
-<!-- 	</servlet> -->
-
-	<!--
-	 - Map static resources to the default servlet
-	 - examples:
-	 -     http://localhost:8080/static/images/pets.png
-	 -     http://localhost:8080/static/styles/petclinic.css
-	-->
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>default</servlet-name> -->
-<!-- 		<url-pattern>/static/*</url-pattern> -->
-<!-- 	</servlet-mapping> -->
 	
 	<!--
 		- Servlet that dispatches request to registered handlers (Controller implementations).
@@ -136,7 +105,7 @@
 	</servlet>
 
 	<!--
-		- Maps the petclinic dispatcher to "*.do". All handler mappings in
+		- Maps the petclinic dispatcher to all URLs. All handler mappings in
 		- petclinic-servlet.xml will by default be applied to this subpath.
 		- If a mapping isn't a /* subpath, the handler mappings are considered
 		- relative to the web app root.
@@ -147,6 +116,8 @@
 		<servlet-name>petclinic</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+
 
 	<filter>
 		<filter-name>httpMethodFilter</filter-name>
