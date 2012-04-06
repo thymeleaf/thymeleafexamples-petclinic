@@ -24,7 +24,7 @@
                         <th>
                             Birth Date: <span th:errors="*{birthDate}" class="errors" th:if="${#fields.hasErrors('birthDate')}">error</span>
                             <br/>
-                            <input type="text" th:field="*{birthDate}" size="10" maxlength="10"/> (yyyy-mm-dd)
+                            <input type="date" th:field="*{birthDate}" size="10" maxlength="10"/> (yyyy-mm-dd)
                         </th>
                     </tr>
                     <tr>

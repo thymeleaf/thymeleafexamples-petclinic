@@ -48,7 +48,8 @@
                             Telephone: <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" 
                                 class="errors"></span>
                             <br/>
-                            <input type="text" th:field="*{telephone}" size="20" maxlength="20"/>
+                            <input type="tel" th:field="*{telephone}" size="20" maxlength="20"
+                                pattern="[0-9]*"/>
                         </th>
                     </tr>
                     <tr>
