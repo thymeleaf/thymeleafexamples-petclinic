@@ -116,8 +116,8 @@
         <property name="prefix" value="/WEB-INF/thymeleaf/" />
         <property name="suffix" value=".html" />
         <property name="templateMode" value="HTML5" />
-        <property name="order" value="2"></property>
-        <property name="cacheable" value="false"></property>
+        <property name="order" value="2" />
+        <property name="cacheable" value="false" />
     </bean>
     <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver" />
