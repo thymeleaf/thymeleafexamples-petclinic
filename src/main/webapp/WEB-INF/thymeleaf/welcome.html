@@ -9,7 +9,7 @@
         <div id="main">
         
             <img th:src="@{/static/images/pets.png}" src="../../images/pets.png" 
-                align="right" style="position:relative;right:30px;"></img>
+                alt="Pets image" style="float: right; position:relative;right:30px;"></img>
             <h2 th:text="#{welcome}">Welcome</h2>
             
             <ul>
@@ -24,7 +24,7 @@
             <table th:substituteby="layout :: footer" class="footer">
                 <tr>
                     <td><a href="welcome.html">Home</a></td>
-                    <td align="right"><img src="../../images/springsource-logo.png" 
+                    <td style="float: right;" ><img src="../../images/springsource-logo.png" 
                         alt="Sponsored by SpringSource"></img></td>
                 </tr>
             </table>
