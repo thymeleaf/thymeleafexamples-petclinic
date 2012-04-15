@@ -17,9 +17,9 @@
                 <span th:remove="tag" 
                     th:each="ste : ${exception.stackTrace}" 
                     th:text="${'at ' + ste.toString()}">This should be the exception stacktrace</span>
-            <p/>
+            </p>
             
-            <br/>
+            <br />
             
             <table th:substituteby="layout :: footer" class="footer">
                 <tr>

@@ -28,7 +28,7 @@
             </table>
             <table class="table-buttons">
                 <tr>
-                    <td colspan="2" align="center">
+                    <td style="text-align: center;">
                         <a th:href="@{'/owners/' + ${owner.id} + '/edit'}" href="form.html">Edit Owner</a>
                     </td>
                     <td>
@@ -41,7 +41,7 @@
             <div th:each="pet : ${owner.pets}" th:remove="tag">
                 <table style="width: 94%;">
                     <tr>
-                        <td valign="top">
+                        <td style="vertical-align: top;">
                             <table>
                                 <tr>
                                     <th>Name</th>
@@ -57,7 +57,7 @@
                                 </tr>
                           </table>
                         </td>
-                        <td valign="top">
+                        <td style="vertical-align: top;">
                             <table>
                                 <thead>
                                     <tr>
