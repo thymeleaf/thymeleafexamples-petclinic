@@ -9,8 +9,7 @@
         <div id="main">
             <h2 th:text="${owner.new} ? 'New Owner:' : 'Owner:'">New Owner:</h2>
             <form th:object="${owner}" action="show.html"
-                th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" 
-                th:method="${owner.new} ? 'post' : 'put'" >
+                th:action="@{#}" th:method="${owner.new} ? 'post' : 'put'" >
                 <table>
                     <tr>
                         <th>

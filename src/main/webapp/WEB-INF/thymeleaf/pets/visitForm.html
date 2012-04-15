@@ -8,8 +8,7 @@
     <body>
         <div id="main">
             <h2 th:text="${visit.new} ? 'New Visit:' : 'Visit:'">Visit</h2>
-            <form th:object="${visit}" th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}"
-                method="post">
+            <form th:object="${visit}" th:action="@{#}" method="post">
             	<b>Pet:</b>
               	<table style="width: 333px;">
 	                <thead>

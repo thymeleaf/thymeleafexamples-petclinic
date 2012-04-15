@@ -11,7 +11,7 @@
             <b>Owner:</b> <span th:remove="tag" th:text="${pet.owner.firstName + ' ' + pet.owner.lastName}"></span> 
             <br/>
             <form th:object="${pet}" th:method="${pet.new} ? 'post' : 'put'" 
-                th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" action="#">
+                th:action="@{#}" action="../owners/show.html">
                 <table>
                     <tr>
                         <th>
@@ -45,9 +45,7 @@
               </table>
             </form>
             
-            <form method="delete" th:if="${!pet.new}" 
-                th:action="@{${#httpServletRequest.servletPath + '?' + #httpServletRequest.queryString}}" 
-                action="#">
+            <form method="delete" th:if="${!pet.new}" th:action="@{#}" action="#">
                 <p class="submit"><input type="submit" value="Delete Pet"/></p>
             </form>
             
