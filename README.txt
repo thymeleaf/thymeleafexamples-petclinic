@@ -2,6 +2,12 @@
 === Spring PetClinic Sample Application with Thymeleaf view layer
 ==========================================================================
 
+
+ To learn more and download latest version:
+ 
+     http://www.thymeleaf.org
+
+
 @author Ken Krebs
 @author Juergen Hoeller
 @author Rob Harrop
