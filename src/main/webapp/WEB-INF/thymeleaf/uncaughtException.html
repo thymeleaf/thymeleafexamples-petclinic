@@ -10,7 +10,7 @@
     <body>
     
         <div id="main" th:with="exception    = ${#httpServletRequest.getAttribute('javax.servlet.error.exception')},
-                                class        = ${exception.class},
+                                exClass      = ${exception.class},
                                 exStackTrace = ${exception.stackTrace},
                                 cookies      = ${#httpServletRequest.cookies}">
                                 
@@ -21,23 +21,28 @@
                 <div th:if="${exception instanceof T(javax.servlet.ServletException)}"  
                      th:object="${exception.rootCause} ?: ${exception}">
                     <p>** Root cause is: <span th:utext="*{message}">ClassNotFound</span></p>  
-                    <p><span th:remove="tag" th:each="st : *{stackTrace}" th:utext="${st + '&lt;br/&gt;'}">Error at line 5</span></p>
+                    <p>
+                      <span th:each="st : *{stackTrace}">
+                        at <span th:text="${st}">a.b.c.MainController.do(MainController:5)</span><br />
+                      </span>
+                    </p>
                 </div>
                 
                 <div th:unless="${exception instanceof T(javax.servlet.ServletException)}" >
-                    <p th:utext="${exception.class + ': ' + exception.message + '&lt;br/&gt;'}">
-                        NullPointerException: null
+                    <p>
+                      <span th:text="${exClass.name}">NullPointerException</span>: 
+                      <span th:text="${exception.message}">null</span><br />
                     </p>
-                    <p><span th:remove="tag"
-                             th:utext="${'at '+ st + '&lt;br/&gt;'}"    
-                             th:each="st : ${exStackTrace}" >
-                          at a.b.c.MainController
-                    </span></p>
+                    <p>
+                      <span th:each="st : ${exStackTrace}">
+                        at <span th:text="${st}">a.b.c.MainController.do(MainController:5)</span><br />
+                      </span>
+                    </p>
                 </div>
                 
             </div>            
             
-            <p th:if="${exception == null}" th:text="'No error information available'"></p>
+            <p th:if="${exception == null}">No error information available</p>
             
             <br />
             Cookies:
