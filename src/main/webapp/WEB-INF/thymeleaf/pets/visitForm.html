@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:substituteby="layout :: header">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link rel="stylesheet" href="../../../styles/petclinic.css" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="../../../styles/petclinic.css" type="text/css" />
         <title>PetClinic :: a Spring Framework demonstration</title>  
     </head>
     <body>
@@ -31,16 +31,16 @@
 				    <tr>
 					    <th>
 					      Date:
-					      <br/><span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="errors">error</span>
+					      <br /><span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="errors">error</span>
 					    </th>
 					    <td>
-					      <input type="text" th:field="*{date}" size="10" maxlength="10"/> (yyyy-mm-dd)
+					      <input type="text" th:field="*{date}" size="10" maxlength="10" /> (yyyy-mm-dd)
 					    </td>
 					</tr>
                     <tr>
                         <th style="vertical-align: top;" >
                             Description:
-                            <br/><span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="errors">error</span>
+                            <br /><span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="errors">error</span>
                         </th>
                         <td>
                             <textarea th:field="*{description}" rows="10" cols="25"></textarea>
@@ -48,14 +48,14 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="hidden" name="petId" th:value="${visit.pet.id}"/>
-                            <p class="submit"><input type="submit" value="Add Visit"/></p>
+                            <input type="hidden" name="petId" th:value="${visit.pet.id}" />
+                            <p class="submit"><input type="submit" value="Add Visit" /></p>
                         </td>
                     </tr>
                 </table>
             </form>
         
-            <br/>
+            <br />
             <b>Previous Visits:</b>
             <table style="width: 333px;">
                 <tr>

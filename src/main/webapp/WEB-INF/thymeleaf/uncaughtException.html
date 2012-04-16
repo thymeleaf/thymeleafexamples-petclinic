@@ -2,52 +2,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
     <head th:substituteby="layout :: header">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link rel="stylesheet" href="../../styles/petclinic.css" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="../../styles/petclinic.css" type="text/css" />
         <title>PetClinic :: a Spring Framework demonstration</title>  
     </head>
     
     <body>
     
-        <div id="main" th:with="exception   = ${#httpServletRequest.getAttribute('javax.servlet.error.exception')},
-                                class       = ${exception.class},
-                                stacktrace  = ${exception.stackTrace},
-                                cookies     = ${#httpServletRequest.cookies}">
+        <div id="main" th:with="exception    = ${#httpServletRequest.getAttribute('javax.servlet.error.exception')},
+                                class        = ${exception.class},
+                                exStackTrace = ${exception.stackTrace},
+                                cookies      = ${#httpServletRequest.cookies}">
                                 
             <h2>Internal error</h2>
             
-            <div th:if="${exception != null}" th:remove="tag">
+            <div th:if="${exception != null}">
             
-                <div th:if="${exception instanceof T(javax.servlet.ServletException)}" th:remove="tag" 
-                    th:object="${exception.rootCause}">
-                    <div th:remove="tag" th:utext="*{'** Root cause is: ' + message + '&lt;br/&gt;'}"></div>
-                    <div th:remove="tag" th:each="st : *{stackTrace}" th:text="${st}"></div>
+                <div th:if="${exception instanceof T(javax.servlet.ServletException)}"  
+                     th:object="${exception.rootCause} ?: ${exception}">
+                    <p>** Root cause is: <span th:utext="*{message}">ClassNotFound</span></p>  
+                    <p><span th:remove="tag" th:each="st : *{stackTrace}" th:utext="${st + '&lt;br/&gt;'}">Error at line 5</span></p>
                 </div>
                 
-                <div th:unless="${exception instanceof T(javax.servlet.ServletException)}" th:remove="tag">
-                    <div th:remove="tag" 
-                        th:utext="${exception.class + ': ' + exception.message + '&lt;br/&gt;'}">
+                <div th:unless="${exception instanceof T(javax.servlet.ServletException)}" >
+                    <p th:utext="${exception.class + ': ' + exception.message + '&lt;br/&gt;'}">
                         NullPointerException: null
-                    </div>
-                    <div th:remove="tag" 
-                        th:utext="${'at '+ st + '&lt;br/&gt;'}"    
-                        th:each="st : ${stackTrace}" >
-                        at a.b.c.MainController
-                    </div>
+                    </p>
+                    <p><span th:remove="tag"
+                             th:utext="${'at '+ st + '&lt;br/&gt;'}"    
+                             th:each="st : ${exStackTrace}" >
+                          at a.b.c.MainController
+                    </span></p>
                 </div>
                 
             </div>            
             
             <p th:if="${exception == null}" th:text="'No error information available'"></p>
             
-            <br/>
+            <br />
             Cookies:
-            <br/>
-            <p th:remove="tag" th:each="c : ${cookies}" th:text="${c.name + '=[' + c.value + ']'}">
-                user =[anonymous]
-            </p>
+            <br />
+            <ul>
+                <li th:each="c : ${cookies}" th:text="${c.name + '=[' + c.value + ']'}">
+                    user =[anonymous]
+                </li>
+            </ul>
             
-            <br/>
+            <br />
             
             <table th:substituteby="layout :: footer" class="footer">
                 <tr>

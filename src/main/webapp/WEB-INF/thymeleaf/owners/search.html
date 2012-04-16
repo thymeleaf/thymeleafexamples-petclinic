@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:substituteby="layout :: header">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link rel="stylesheet" href="../../../styles/petclinic.css" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="../../../styles/petclinic.css" type="text/css" />
         <title>PetClinic :: a Spring Framework demonstration</title>  
     </head>
     <body>
@@ -13,18 +13,18 @@
                     <tr>
                         <th>
                             Last Name:  <span th:errors="*{lastName}" class="errors">name is required!</span>
-                            <br/> 
+                            <br /> 
                             <input type="text" th:field="*{lastName}" size="30" maxlength="80" />
                         </th>
                     </tr>
                     <tr>
                         <td>
-                            <p class="submit"><input type="submit" value="Find Owners"/></p>
+                            <p class="submit"><input type="submit" value="Find Owners" /></p>
                         </td>
                     </tr>
                 </table>
             </form>
-            <br/>
+            <br />
             <a th:href="@{/owners/new}" href="form.html">Add Owner</a>
             <table th:substituteby="layout :: footer" class="footer">
                 <tr>

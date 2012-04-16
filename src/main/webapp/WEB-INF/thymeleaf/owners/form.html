@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:substituteby="layout :: header">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link rel="stylesheet" href="../../../styles/petclinic.css" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="../../../styles/petclinic.css" type="text/css" />
         <title>PetClinic :: a Spring Framework demonstration</title>  
     </head>
     <body>
@@ -13,48 +13,48 @@
                 <table>
                     <tr>
                         <th>
-                            First Name: <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" 
-                                class="errors"></span>
-                            <br/>
-                            <input type="text" th:field="*{firstName}" size="30" maxlength="80"/>
+                            First Name: 
+                            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="errors"></span>
+                            <br />
+                            <input type="text" th:field="*{firstName}" size="30" maxlength="80" />
                         </th>
                     </tr>
                     <tr>
                         <th>
-                            Last Name: <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" 
-                                class="errors">error</span>
-                            <br/>
-                            <input type="text" th:field="*{lastName}" size="30" maxlength="80"/>
+                            Last Name: 
+                            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="errors">error</span>
+                            <br />
+                            <input type="text" th:field="*{lastName}" size="30" maxlength="80" />
                       </th>
                     </tr>
                     <tr>
                         <th>
-                            Address: <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="errors"></span>
-                            <br/>
-                            <input type="text" th:field="*{address}" size="30" maxlength="80"/>
+                            Address: 
+                            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="errors">error</span>
+                            <br />
+                            <input type="text" th:field="*{address}" size="30" maxlength="80" />
                         </th>
                     </tr>
                     <tr>
                         <th>
-                            City: <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" 
-                                class="errors">error</span>
-                            <br/>
-                            <input type="text" th:field="*{city}" size="30" maxlength="80"/>
+                            City: 
+                            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="errors">error</span>
+                            <br />
+                            <input type="text" th:field="*{city}" size="30" maxlength="80" />
                         </th>
                     </tr>
                     <tr>
                         <th>
-                            Telephone: <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" 
-                                class="errors"></span>
-                            <br/>
-                            <input type="tel" th:field="*{telephone}" size="20" maxlength="20"
-                                pattern="[0-9]*"/>
+                            Telephone: 
+                            <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" class="errors">error</span>
+                            <br />
+                            <input type="tel" th:field="*{telephone}" size="20" maxlength="20" pattern="[0-9]*" />
                         </th>
                     </tr>
                     <tr>
                         <td>
-                            <p th:if="${owner.new}" class="submit"><input type="submit" value="Add Owner"/></p>
-                            <p th:unless="${owner.new}" class="submit"><input type="submit" value="Update Owner"/></p>
+                            <p th:if="${owner.new}" class="submit"><input type="submit" value="Add Owner" /></p>
+                            <p th:unless="${owner.new}" class="submit"><input type="submit" value="Update Owner" /></p>
                         </td>
                     </tr>
               </table>

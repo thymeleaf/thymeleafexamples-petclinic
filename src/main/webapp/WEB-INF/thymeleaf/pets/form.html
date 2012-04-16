@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:substituteby="layout :: header">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link rel="stylesheet" href="../../../styles/petclinic.css" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="../../../styles/petclinic.css" type="text/css" />
         <title>PetClinic :: a Spring Framework demonstration</title>  
     </head>
     <body>
         <div id="main">
             <h2 th:text="${pet.new} ? 'New Pet' : 'Pet'">Pet</h2>
             <b>Owner:</b> <span th:remove="tag" th:text="${pet.owner.firstName + ' ' + pet.owner.lastName}"></span> 
-            <br/>
+            <br />
             <form th:object="${pet}" th:method="${pet.new} ? 'post' : 'put'" 
                 th:action="@{#}" action="../owners/show.html">
                 <table>
                     <tr>
                         <th>
                             Name: <span th:errors="*{name}" class="errors" th:if="${#fields.hasErrors('name')}">error</span>
-                            <br/>
-                            <input type="text" th:field="*{name}" size="30" maxlength="30"/>
+                            <br />
+                            <input type="text" th:field="*{name}" size="30" maxlength="30" />
                         </th>
                     </tr>
                     <tr>
                         <th>
                             Birth Date: <span th:errors="*{birthDate}" class="errors" th:if="${#fields.hasErrors('birthDate')}">error</span>
-                            <br/>
+                            <br />
                             <input type="date" th:field="*{birthDate}" /> (yyyy-mm-dd)
                         </th>
                     </tr>
                     <tr>
                         <th>
                             Type: <span th:errors="*{type}" class="errors" th:if="${#fields.hasErrors('type')}">error</span>
-                            <br/>
+                            <br />
                             <select th:field="*{type}">
                                 <option th:each="t : ${types}" th:text="${t}" th:value="${t}" >option</option>
                             </select>
@@ -38,15 +38,15 @@
                     </tr>
                     <tr>
                         <td>  
-                            <p class="submit" th:if="${pet.new}"><input type="submit" value="Add Pet"/></p>
-                            <p class="submit" th:unless="${pet.new}"><input type="submit" value="Update Pet"/></p>
+                            <p class="submit" th:if="${pet.new}"><input type="submit" value="Add Pet" /></p>
+                            <p class="submit" th:unless="${pet.new}"><input type="submit" value="Update Pet" /></p>
                         </td>
                     </tr>
               </table>
             </form>
             
             <form method="delete" th:if="${!pet.new}" th:action="@{#}" action="#">
-                <p class="submit"><input type="submit" value="Delete Pet"/></p>
+                <p class="submit"><input type="submit" value="Delete Pet" /></p>
             </form>
             
             <table th:substituteby="layout :: footer" class="footer">
