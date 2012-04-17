@@ -65,10 +65,12 @@
                                         <th>Description</th>
                                     </tr>
                                 </thead>
-                                <tr th:each="visit : ${pet.visits}">
-                                    <td th:text="${#dates.format(visit.date, 'yyyy-MM-dd')}">2000-02-01</td> 
-                                    <td th:text="${visit.description}">Visit to check temperature. Result: ok</td>
-                                </tr>                        
+                                <tbody>
+                                    <tr th:each="visit : ${pet.visits}">
+                                        <td th:text="${#dates.format(visit.date, 'yyyy-MM-dd')}">2000-02-01</td> 
+                                        <td th:text="${visit.description}">Visit to check temperature. Result: ok</td>
+                                    </tr>
+                                </tbody>                      
                             </table>
                         </td>
                     </tr>
@@ -93,7 +95,7 @@
                 <tr>
                     <td><a href="../welcome.html">Home</a></td>
                     <td style="float: right;"><img src="../../../images/springsource-logo.png" 
-                        alt="Sponsored by SpringSource"></img></td>
+                        alt="Sponsored by SpringSource" /></td>
                 </tr>
             </table>
         </div>

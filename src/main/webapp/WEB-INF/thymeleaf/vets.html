@@ -16,15 +16,17 @@
                         <th>Specialties</th>
                     </tr>
                 </thead>
-                <tr th:each="vet : ${vets.vetList}">
-                      <td th:text="${vet.firstName + ' ' + vet.lastName}">vet name</td>
-                      <td>
-                	    <span th:remove="tag" th:each="specialty : ${vet.specialties}" th:text="${specialty.name}">
-                            specialty name
-                        </span>
-                        <span th:remove="tag" th:if="${vet.nrOfSpecialties == 0}">none</span>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr th:each="vet : ${vets.vetList}">
+                        <td th:text="${vet.firstName + ' ' + vet.lastName}">vet name</td>
+                        <td>
+                    	    <span th:remove="tag" th:each="specialty : ${vet.specialties}" th:text="${specialty.name}">
+                                specialty name
+                            </span>
+                            <span th:remove="tag" th:if="${vet.nrOfSpecialties == 0}">none</span>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <table class="table-buttons">
                 <tr>
@@ -38,7 +40,7 @@
                 <tr>
                     <td><a href="welcome.html">Home</a></td>
                     <td style="float: right;"><img src="../../images/springsource-logo.png" 
-                        alt="Sponsored by SpringSource"></img></td>
+                        alt="Sponsored by SpringSource" /></td>
                 </tr>
             </table>
         </div>        

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+    <!-- 
+        - [THYMELEAF] In this page, we have removed the java code and converted the file into a displayable HTML one 
+    -->
 
     <head th:substituteby="layout :: header">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,10 +12,8 @@
     
     <body>
     
-        <div id="main" th:with="exception    = ${#httpServletRequest.getAttribute('javax.servlet.error.exception')},
-                                exClass      = ${exception.class},
-                                exStackTrace = ${exception.stackTrace},
-                                cookies      = ${#httpServletRequest.cookies}">
+        <div id="main" th:with="exception = ${#httpServletRequest.getAttribute('javax.servlet.error.exception')},
+                                cookies   = ${#httpServletRequest.cookies}">
                                 
             <h2>Internal error</h2>
             
@@ -30,11 +31,11 @@
                 
                 <div th:unless="${exception instanceof T(javax.servlet.ServletException)}" >
                     <p>
-                      <span th:text="${exClass.name}">NullPointerException</span>: 
+                      <span th:text="${exception.class.name}">NullPointerException</span>: 
                       <span th:text="${exception.message}">null</span><br />
                     </p>
                     <p>
-                      <span th:each="st : ${exStackTrace}">
+                      <span th:each="st : ${exception.stackTrace}">
                         at <span th:text="${st}">a.b.c.MainController.do(MainController:5)</span><br />
                       </span>
                     </p>
@@ -59,7 +60,7 @@
                 <tr>
                     <td><a href="welcome.html">Home</a></td>
                     <td style="float: right;"><img src="../../images/springsource-logo.png" 
-                        alt="Sponsored by SpringSource"></img></td>
+                        alt="Sponsored by SpringSource" /></td>
                 </tr>
             </table>
         </div>

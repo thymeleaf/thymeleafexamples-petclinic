@@ -8,7 +8,7 @@
     <body>
         <div id="main">
             <h2 th:text="${visit.new} ? 'New Visit:' : 'Visit:'">Visit</h2>
-            <form th:object="${visit}" th:action="@{#}" method="post">
+            <form action="#" th:object="${visit}" th:action="@{#}" method="post">
             	<b>Pet:</b>
               	<table style="width: 333px;">
 	                <thead>
@@ -19,12 +19,14 @@
 		                    <th>Owner</th>
 	                    </tr>
 	                </thead>
-	                <tr>
-	                	<td th:text="${visit.pet.name}">name</td>
-	                  	<td th:text="${#dates.format(visit.pet.birthDate,'yyyy-MM-dd')}">20000101</td>
-	                  	<td th:text="${visit.pet.type.name}">type</td>
-	                  	<td th:text="${visit.pet.owner.firstName + ' ' + visit.pet.owner.lastName}">owner</td>
-	                </tr>
+                    <tbody>
+    	                <tr>
+    	                	<td th:text="${visit.pet.name}">name</td>
+    	                  	<td th:text="${#dates.format(visit.pet.birthDate,'yyyy-MM-dd')}">20000101</td>
+    	                  	<td th:text="${visit.pet.type.name}">type</td>
+    	                  	<td th:text="${visit.pet.owner.firstName + ' ' + visit.pet.owner.lastName}">owner</td>
+    	                </tr>
+                    </tbody>
               	</table>
             
 				<table style="width: 333px;">
@@ -71,7 +73,7 @@
                 <tr>
                     <td><a href="../welcome.html">Home</a></td>
                     <td style="float: right;"><img src="../../../images/springsource-logo.png" 
-                        alt="Sponsored by SpringSource"></img></td>
+                        alt="Sponsored by SpringSource" /></td>
                 </tr>
             </table>
         </div>

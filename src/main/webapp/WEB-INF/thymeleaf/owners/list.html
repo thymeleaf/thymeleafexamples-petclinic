@@ -18,37 +18,39 @@
                         <th>Pets</th>
                     </tr>
                 </thead>
-                <tr th:each="owner : ${selections}">
-                    <td>
-                        <a th:href="@{'/owners/' + ${owner.id}}" href="show.html" 
-                            th:text="${owner.firstName + owner.lastName}">Mary Smith</a>
-                    </td>
-                    <td th:text="${owner.address}">45, Oxford Street</td>
-                    <td th:text="${owner.city}">Cambridge</td>
-                    <td th:text="${owner.telephone}">555-555-555</td>
-                    <td>
-                        <span th:remove="tag" th:each="pet : ${owner.pets}" th:utext="${pet.name + '&nbsp;'}">
-                            Bob
-                        </span>
-                    </td>
-                </tr>
-                <tr th:remove="all">
-                    <td><a href="show.html">John Moore</a></td>
-                    <td>78, NY Street</td>
-                    <td>Washington</td>
-                    <td>333-333-333</td>
-                    <td>
-                        <span>Roger</span>
-                        &nbsp;
-                        <span>Peggy</span>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr th:each="owner : ${selections}">
+                        <td>
+                            <a th:href="@{'/owners/' + ${owner.id}}" href="show.html" 
+                               th:text="${owner.firstName + owner.lastName}">Mary Smith</a>
+                        </td>
+                        <td th:text="${owner.address}">45, Oxford Street</td>
+                        <td th:text="${owner.city}">Cambridge</td>
+                        <td th:text="${owner.telephone}">555-555-555</td>
+                        <td>
+                            <span th:each="pet : ${owner.pets}" th:utext="${pet.name + '&nbsp;'}">
+                                Bob
+                            </span>
+                        </td>
+                    </tr>
+                    <tr th:remove="all">
+                        <td><a href="show.html">John Moore</a></td>
+                        <td>78, NY Street</td>
+                        <td>Washington</td>
+                        <td>333-333-333</td>
+                        <td>
+                            <span>Roger</span>
+                            &nbsp;
+                            <span>Peggy</span>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <table th:substituteby="layout :: footer" class="footer">
                 <tr>
                     <td><a href="../welcome.html">Home</a></td>
                     <td style="float: right;"><img src="../../../images/springsource-logo.png" 
-                        alt="Sponsored by SpringSource"></img></td>
+                        alt="Sponsored by SpringSource" /></td>
                 </tr>
             </table>
         </div>
