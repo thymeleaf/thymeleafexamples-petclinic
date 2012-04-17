@@ -25,7 +25,7 @@
   <groupId>thymeleafexamples</groupId>
   <artifactId>petclinic</artifactId>
   <packaging>war</packaging>
-  <version>20120402</version>
+  <version>20120417</version>
   <name>Thymeleaf Examples - Spring MVC PetClinic application</name>
 
   <description>XML/XHTML/HTML5 template engine for Java</description>

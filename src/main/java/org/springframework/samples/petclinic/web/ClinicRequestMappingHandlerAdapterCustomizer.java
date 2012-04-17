@@ -16,6 +16,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
+/*
+ * [THYMELEAF] See https://jira.springsource.org/browse/SPR-7077
+ */
 @Component
 public class ClinicRequestMappingHandlerAdapterCustomizer implements BeanPostProcessor {
 

@@ -38,15 +38,27 @@
 		- enabled by default with Java 5+.
 	-->
 	
-	<!--
+	
+  
+    <!-- 
+     
+        [THYMELEAF] The new <mvc:annotation-driven /> tag, as of Spring 3.1, declares a binding initializer
+                    which is incompatible with the declaration of this bean as it was in the original application.
+                    The org.springframework.samples.petclinic.web.ClinicRequestMappingHandlerAdapterCustomizer
+                    class has been created fixing this behaviour.
+                    
+                    See https://jira.springsource.org/browse/SPR-7077
+     
 		- This bean processes annotated handler methods, applying PetClinic-specific PropertyEditors
 		- for request parameter binding. It overrides the default AnnotationMethodHandlerAdapter.
-	-->
-<!-- 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> -->
-<!-- 		<property name="webBindingInitializer"> -->
-<!-- 			<bean class="org.springframework.samples.petclinic.web.ClinicBindingInitializer"/> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="webBindingInitializer">
+			<bean class="org.springframework.samples.petclinic.web.ClinicBindingInitializer"/>
+		</property>
+ 	</bean>
+    -->
+
 
 	<!--
 		- This bean resolves specific types of exceptions to corresponding logical 
