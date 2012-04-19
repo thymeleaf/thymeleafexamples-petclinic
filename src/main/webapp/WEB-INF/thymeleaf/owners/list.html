@@ -22,7 +22,7 @@
                     <tr th:each="owner : ${selections}">
                         <td>
                             <a th:href="@{'/owners/' + ${owner.id}}" href="show.html" 
-                               th:text="${owner.firstName + owner.lastName}">Mary Smith</a>
+                               th:text="${owner.firstName + ' ' + owner.lastName}">Mary Smith</a>
                         </td>
                         <td th:text="${owner.address}">45, Oxford Street</td>
                         <td th:text="${owner.city}">Cambridge</td>
