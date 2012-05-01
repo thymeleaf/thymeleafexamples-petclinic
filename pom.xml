@@ -25,7 +25,7 @@
   <groupId>thymeleafexamples</groupId>
   <artifactId>petclinic</artifactId>
   <packaging>war</packaging>
-  <version>20120422</version>
+  <version>20120501</version>
   <name>Thymeleaf Examples - Spring MVC PetClinic application</name>
 
   <description>XML/XHTML/HTML5 template engine for Java</description>
@@ -210,7 +210,7 @@
   <properties>
     <spring.version>3.1.1.RELEASE</spring.version>
     <slf4j.version>1.6.1</slf4j.version>
-    <thymeleaf.version>2.0.6</thymeleaf.version>
+    <thymeleaf.version>2.0.7</thymeleaf.version>
   </properties>
 	
 	
