@@ -44,9 +44,9 @@
   </organization>
   
   <scm>
-    <url>scm:svn:http://thymeleaf.svn.sourceforge.net/svnroot/thymeleaf/trunk/thymeleafexamples-petclinic</url>
-    <connection>scm:svn:https://thymeleaf.svn.sourceforge.net/svnroot/thymeleaf/trunk/thymeleafexamples-petclinic</connection>
-    <developerConnection>scm:svn:https://thymeleaf.svn.sourceforge.net/svnroot/thymeleaf/trunk/thymeleafexamples-petclinic</developerConnection>
+    <url>scm:git:git@github.com:thymeleaf/thymeleafexamples-petclinic.git</url>
+    <connection>scm:git:git@github.com:thymeleaf/thymeleafexamples-petclinic.git</connection>
+    <developerConnection>scm:git:git@github.com:thymeleaf/thymeleafexamples-petclinic.git</developerConnection>
   </scm>
   
   <developers>
