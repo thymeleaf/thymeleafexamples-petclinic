@@ -118,6 +118,16 @@
     </repository>
   </repositories>
 
+  
+  <properties>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    <thymeleaf.version>2.0.12-SNAPSHOT</thymeleaf.version>
+    <springframework.version>3.1.1.RELEASE</springframework.version>
+    <slf4j.version>1.6.1</slf4j.version>
+  </properties>
+	
+  
+  
   <build>
   
     <resources>
@@ -206,13 +216,6 @@
   </profiles>
 
 
-  
-  <properties>
-    <spring.version>3.1.1.RELEASE</spring.version>
-    <slf4j.version>1.6.1</slf4j.version>
-    <thymeleaf.version>2.0.11</thymeleaf.version>
-  </properties>
-	
 	
   <dependencies>
   
@@ -235,7 +238,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>org.springframework.context</artifactId>
-      <version>${spring.version}</version>
+      <version>${springframework.version}</version>
       <exclusions>
         <!-- Exclude Commons Logging in favor of SLF4j -->
         <exclusion>
@@ -247,22 +250,22 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>org.springframework.orm</artifactId>
-      <version>${spring.version}</version>
+      <version>${springframework.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>org.springframework.oxm</artifactId>
-      <version>${spring.version}</version>
+      <version>${springframework.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>org.springframework.web.servlet</artifactId>
-      <version>${spring.version}</version>
+      <version>${springframework.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>org.springframework.aspects</artifactId>
-      <version>${spring.version}</version>
+      <version>${springframework.version}</version>
     </dependency>
     <!-- AspectJ -->
     <dependency>
@@ -416,7 +419,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>org.springframework.test</artifactId>
-      <version>${spring.version}</version>
+      <version>${springframework.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
