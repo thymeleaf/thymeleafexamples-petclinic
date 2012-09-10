@@ -129,8 +129,10 @@
         <property name="suffix" value=".html" />
         <property name="templateMode" value="HTML5" />
         <property name="order" value="2" />
+        <!-- Template cache is set to false (default is true).        -->
         <property name="cacheable" value="false" />
     </bean>
+
     <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver" />
     </bean>
