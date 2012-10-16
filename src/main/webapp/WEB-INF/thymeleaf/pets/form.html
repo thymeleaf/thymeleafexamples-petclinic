@@ -45,7 +45,7 @@
               </table>
             </form>
             
-            <form method="delete" th:if="${!pet.new}" th:action="@{#}" action="#">
+            <form th:method="'delete'" th:if="${!pet.new}" th:action="@{#}" action="#">
                 <p class="submit"><input type="submit" value="Delete Pet" /></p>
             </form>
             
