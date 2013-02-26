@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head th:substituteby="fragments/headTag"></head>
+
+<body>
+
+<script>
+    $(function () {
+        $("#birthDate").datepicker({ dateFormat: 'yy/mm/dd'});
+    });
+</script>
+<div class="container">
+    <div th:substituteby="fragments/bodyHeader"></div>
+    
+    <h2>
+        <span th:if="${pet['new']}" th:remove="tag">New </span>
+        Pet
+    </h2>
+
+    <form th:object="${pet}" th:method="${pet['new']} ? 'post' : 'put'"
+               class="form-horizontal">
+        <div class="control-group" id="owner">
+            <label class="control-label">Owner </label>
+
+            <span th:remove="tag" th:text="${pet.owner.firstName + ' ' + pet.owner.lastName}">[firstName lastName]</span>
+        </div>
+        
+        
+    <div class="control-group" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
+        <label class="control-label">Name</label>
+
+        <div class="controls">
+            <input th:field="*{name}" type="text"/>
+            <span class="help-inline" th:errors="*{name}">[error]</span>
+        </div>
+    </div>
+        
+    <div class="control-group" th:classappend="${#fields.hasErrors('birthDate')} ? 'error' : ''">
+        <label class="control-label">Birth Date</label>
+
+        <div class="controls">
+            <input th:field="*{birthDate}" type="text"/>
+            <span class="help-inline" th:errors="*{birthDate}">[error]</span>
+        </div>
+    </div>        
+        
+        <div class="control-group">
+            <label class="control-label">Type </label>
+            <select th:field="*{type}" size="5">
+                <option th:each="t : ${types}" th:text="${t}" th:value="${t}" >[option]</option>
+            </select>
+        </div>
+        <div class="form-actions">
+            <button th:if="${pet['new']}" type="submit">Add Pet</button>
+            <button th:unless="${pet['new']}" type="submit">Update Pet</button>      
+        </div>
+    </form>
+    <!-- This tag was empty -->
+<!--     <c:if test="${!pet['new']}"> -->
+<!--     </c:if> -->
+    <div th:substituteby="fragments/footer"></div>
+</div>
+</body>
+
+</html>

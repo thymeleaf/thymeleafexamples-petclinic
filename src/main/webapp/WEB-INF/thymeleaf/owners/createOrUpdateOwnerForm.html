@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head th:substituteby="fragments/headTag"></head>
+
+<body>
+<div class="container">
+    <div th:substituteby="fragments/bodyHeader"></div>
+
+
+    <h2>
+        <span th::if="${owner['new']}" th:remove="tag">New </span> Owner
+    </h2>
+    <form th:object="${owner}" th:method="${owner['new']} ? 'post' : 'put'" 
+        th:action="@{${#httpServletRequest.servletPath}}" class="form-horizontal" id="add-owner-form">
+        <div class="control-group" th:classappend="${#fields.hasErrors('firstName')} ? 'error' : ''">
+            <label class="control-label">First Name</label>
+            <div class="controls">
+                <input type="text" th:field="*{firstName}" />
+                <span class="help-inline" th:errors="*{firstName}">[error]</span>
+            </div>
+        </div>
+    
+        <div class="control-group" th:classappend="${#fields.hasErrors('lastName')} ? 'error' : ''">
+            <label class="control-label">Last Name</label>
+            <div class="controls">
+                <input type="text" th:field="*{lastName}" />
+                <span class="help-inline" th:errors="*{lastName}">[error]</span>
+            </div>
+        </div>
+    
+        <div class="control-group" th:classappend="${#fields.hasErrors('address')} ? 'error' : ''">
+            <label class="control-label">Address</label>
+            <div class="controls">
+                <input type="text" th:field="*{address}" />
+                <span class="help-inline" th:errors="*{address}">[error]</span>
+            </div>
+        </div>
+    
+        <div class="control-group" th:classappend="${#fields.hasErrors('city')} ? 'error' : ''">
+            <label class="control-label">City</label>
+            <div class="controls">
+                <input type="text" th:field="*{city}" />
+                <span class="help-inline" th:errors="*{city}">[error]</span>
+            </div>
+        </div>
+    
+        <div class="control-group" th:classappend="${#fields.hasErrors('telephone')} ? 'error' : ''">
+            <label class="control-label">Telephone</label>
+            <div class="controls">
+                <input type="text" th:field="*{telephone}" />                
+                <span class="help-inline" th:errors="*{telephone}">[error]</span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button th:if="${owner['new']}" type="submit">Add Owner</button>
+            <button th:unless="${owner['new']}" type="submit">Update Owner</button>
+        </div>
+    </form>
+</div>
+<div th:substituteby="fragments/footer"></div>
+</body>
+
+</html>

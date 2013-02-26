@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head th:substituteby="fragments/headTag"></head>
+
+<body>
+<div class="container">
+
+    <div th:substituteby="fragments/bodyHeader"></div>
+
+    <img th:src="@{/resources/images/pets.png}"/>
+
+    <h2>Something happened...</h2>
+
+    <p th:text="${exception.message}">The exception message...</p>
+
+
+    <div th:substituteby="fragments/footer"></div>
+
+</div>
+</body>
+
+</html>

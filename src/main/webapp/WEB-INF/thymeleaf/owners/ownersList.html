@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head th:substituteby="fragments/headTag"></head>
+
+<body>
+<div class="container">
+    <div th:substituteby="fragments/bodyHeader"></div>
+    <h2>Owners</h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Name</th>
+            <th style="width: 200px;">Address</th>
+            <th>City</th>
+            <th>Telephone</th>
+            <th style="width: 100px;">Pets</th>
+        </tr>
+        </thead>
+        <tr th:each="owner : ${selections}">
+            <td>
+                <a th:href="@{'/owners/' + ${owner.id}}" href="ownerDetails.html" th:text="${owner.firstName + ' ' + owner.lastName}">[firstname lastname]</a>
+            </td>
+            <td th:text="${owner.address}">[address]</td>
+            <td th:text="${owner.city}">[city]</td>
+            <td th:text="${owner.telephone}">[telephone]</td>
+            <td>
+                <span th:remove="tag" th:each="pet : ${owner.pets}" th:text="${pet.name}">
+                       [pet name]
+                </span>
+            </td>
+        </tr>
+        
+    </table>    
+    
+    <div th:substituteby="fragments/footer"></div>
+
+</div>
+</body>
+
+</html>

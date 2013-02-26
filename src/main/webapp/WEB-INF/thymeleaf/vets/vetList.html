@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head th:substituteby="fragments/headTag"></head>
+
+<body>
+<div class="container">
+    <div th:substituteby="fragments/bodyHeader"></div>
+
+    <h2>Veterinarians</h2>
+
+    <table class="table table-stripped" style="width:600px;">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Specialties</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="vet : ${vets.vetList}">
+                <td th:text="${vet.firstName + ' ' + vet.lastName}">[firstName lastName]</td>
+                <td>
+                    <span th:remove="tag" th:each="specialty : ${vet.specialties}" th:text="${specialty.name}">
+                       [specialty name]
+                    </span>
+                    <span th:remove="tag" th:if="${vet.nrOfSpecialties == 0}">none</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table-buttons">
+        <tr>
+            <td>
+                <a th:href="@{'/vets.xml'}" href="#" htmlEscape="true">View as XML</a>
+            </td>
+            <td>
+                <a th:href="@{'/vets.atom'}" href="#" htmlEscape="true">Subscribe to Atom feed</a>
+            </td>
+        </tr>
+    </table>
+
+    <div th:substituteby="fragments/footer"></div>
+
+</div>
+</body>
+
+</html>
