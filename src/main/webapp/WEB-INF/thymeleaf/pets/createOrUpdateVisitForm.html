@@ -34,7 +34,7 @@
         </tr>
     </table>
 
-    <form th:object="${visit}" th:action="@{${#httpServletRequest.servletPath}}">
+    <form th:object="${visit}" th:action="@{${#httpServletRequest.servletPath}}" method="post">
         <div class="control-group">
             <label class="control-label">Date </label>
 
