@@ -49,7 +49,8 @@
                     <property name="viewNames" 
                               value="bodyHeader,footer,headTag,welcome,exception,vets/vetList,                                
                                owners/ownersList,owners/ownerDetails,owners/findOwners,  
-                                 owners/createOrUpdateOwnerForm"/>   
+                                 owners/createOrUpdateOwnerForm,pets/createOrUpdatePetForm,
+                                 pets/createOrUpdateVisitForm"/>   
                 </bean>
         
                  <!-- Default viewClass: JSTL view (JSP with html output) -->

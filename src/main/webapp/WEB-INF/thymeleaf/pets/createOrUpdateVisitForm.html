@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head th:substituteby="fragments/headTag"></head>
+
+
+<body>
+<script>
+    $(function () {
+        $("#date").datepicker({ dateFormat: 'yy/mm/dd'});
+    });
+</script>
+<div class="container">
+    <div th:substituteby="fragments/bodyHeader"></div>
+    <h2><span th:if="${visit['new']}" th:remove="tag">New </span>Visit</h2>
+
+    <b>Pet</b>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Birth Date</th>
+            <th>Type</th>
+            <th>Owner</th>
+        </tr>
+        </thead>
+        <tr>
+            <td th:text="${visit.pet.name}">[name]</td>
+            <td th:text="${#dates.format(visit.pet.birthDate.toDate(), 'yyyy/MM/dd')}">[birthdate]</td>
+            <td th:text="${visit.pet.type.name}">[type]</td>
+            <td th:text="${visit.pet.owner.firstName + ' ' + visit.pet.owner.lastName}">[firstName lastName]</td>
+        </tr>
+    </table>
+
+    <form th:object="${visit}" th:action="@{${#httpServletRequest.servletPath}}">
+        <div class="control-group">
+            <label class="control-label">Date </label>
+
+            <div class="controls">
+                <input type="text" th:field="*{date}"/>
+                <span class="help-inline" th:errors="*{date}">[date error]</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Description </label>
+
+            <div class="controls">
+                <input type="text" th:field="*{description}"/>
+                <span class="help-inline" th:errors="*{description}">[description error]</span>
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="hidden" name="petId" th:value="${visit.pet.id}"/>
+            <button type="submit">Add Visit</button>
+        </div>
+    </form>
+
+    <br/>
+    <b>Previous Visits</b>
+    <table style="width: 333px;">
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+        </tr>
+        <c:forEach var="visit" items="${visit.pet.visits}">
+                <tr th:if="${!visit['new']}">
+                    <td><joda:format value="${visit.date}" pattern="yyyy/MM/dd"/></td>
+                    <td th:text="${visit.description}">[description]</td>
+                </tr>
+        </c:forEach>
+    </table>
+
+</div>
+<div th:substituteby="fragments/footer"></div>
+</body>
+
+</html>
