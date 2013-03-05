@@ -9,7 +9,7 @@
 <jsp:include page="../fragments/headTag.jsp"/>
 
 
-<body>
+<body>jsp
 <script>
     $(function () {
         $("#date").datepicker({ dateFormat: 'yy/mm/dd'});
