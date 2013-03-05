@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head th:substituteby="fragments/headTag :: headTag">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>PetClinic :: a Spring Framework demonstration</title>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+        th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../../../resources/css/petclinic.css"
+        th:href="@{/resources/css/petclinic.css}" rel="stylesheet"/>
+    
+    <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
+        th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
+        th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
+    
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
+        th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}" rel="stylesheet"></link>
+</head>
+
+<body>
+<div class="container">
+    <div th:include="fragments/bodyHeader" th:remove="tag">
+    
+        <img th:src="@{/resources/images/banner-graphic.png}" 
+            src="../../../resources/images/banner-graphic.png"/>
+        
+        <div class="navbar" style="width: 601px;">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li style="width: 100px;"><a href="../welcome.html" th:href="@{/}"><i class="icon-home"></i>Home</a></li>
+                    <li style="width: 130px;"><a href="../owners/findOwners.html" th:href="@{/owners/find.html}"><i class="icon-search"></i>Find owners</a></li>
+                    <li style="width: 140px;"><a href="../vets/vetList.html" th:href="@{/vets.html}"><i class="icon-th-list"></i>Veterinarians</a></li>
+                    <li style="width: 90px;"><a href="../exception.html" th:href="@{/oups.html}" title="trigger a RuntimeException to see how it is handled"><i class="icon-warning-sign"></i>Error</a></li>
+                    <li style="width: 80px;"><a href="#" title="not available yet. Work in progress!!"><i class=" icon-question-sign"></i>Help</a></li>
+                </ul>
+            </div>
+        </div>
+            
+            
+    </div>
+
+    <h2>Owner Information</h2>
+
+    <table class="table table-striped" style="width:600px;">
+        <tr>
+            <th>Name</th>
+            <td><b th:text="${owner.firstName + ' ' + owner.lastName}">[firstname lastname]</b></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td th:text="${owner.address}">[address]</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td th:text="${owner.city}">[city]</td>
+        </tr>
+        <tr>
+            <th>Telephone</th>
+            <td th:text="${owner.telephone}">[telephone]</td>
+        </tr>
+         <tr>
+            <td> 
+            	<a th:href="@{${owner.id} + '/edit.html'}" href="./createOrUpdateOwnerForm.html" class="btn btn-info">Edit Owner</a></td>
+            <td>
+            	<a th:href="@{${owner.id} + '/pets/new.html'}" href="../pets/createOrUpdatePetForm.html"  class="btn btn-success">Add New Pet</a></td>
+        </tr>
+    </table>
+
+    <h2>Pets and Visits</h2>
+
+    
+        <table class="table" style="width:600px;" th:each="pet : ${owner.pets}">
+            <tr>
+                <td valign="top" style="width: 120px;">
+                    <dl class="dl-horizontal">
+                        <dt>Name</dt>
+                        <dd th:text="${pet.name}">[name]</dd>
+                        <dt>Birth Date</dt>
+                        <dd th:text="${#dates.format(pet.birthDate.toDate(), 'yyyy-MM-dd')}">[birthdate yyyy-MM-dd]</dd>
+                        <dt>Type</dt>
+                        <dd th:text="${pet.type.name}">[type]</dd>
+                    </dl>
+                </td>
+                <td valign="top">
+                    <table class="table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Visit Date</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                            <tr th:each="visit : ${pet.visits}">
+                                <td th:text="${#dates.format(visit.date.toDate(), 'yyyy-MM-dd')}">[date yyyy-MM-dd</td>
+                                <td th:text="${visit.description}">[description]</td>
+                            </tr>
+                        <tr>
+                            <td> 
+			                    <a th:href="@{'/owners/' + ${owner.id} + '/pets/' + ${pet.id} + '/edit'}" 
+                                    href="../pets/createOrUpdatePetForm.html">Edit Pet</a>
+			                </td>
+                            <td>
+			                    <a th:href="@{'/owners/' + ${owner.id} + '/pets/' + ${pet.id} + '/visits/new'}" 
+                                    href="../pets/createOrUpdateVisitForm.html">Add Visit</a>
+                            </td>
+                       	</tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    
+        <table th:substituteby="fragments/footer :: footer" class="footer">
+            <tr>
+                <td></td>
+                <td align="right">
+                   <img src="../../../resources/images/springsource-logo.png"
+                    th:src="@{/resources/images/springsource-logo.png}" alt="Sponsored by SpringSource" />
+                </td>
+            </tr>
+        </table>
+
+</div>
+
+</body>
+
+</html>
