@@ -15,6 +15,13 @@
  */
 package org.springframework.samples.petclinic.repository.jdbc;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -31,12 +38,6 @@ import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
 import org.springframework.samples.petclinic.util.EntityUtils;
 import org.springframework.stereotype.Repository;
-
-import javax.sql.DataSource;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * A simple JDBC-based implementation of the {@link OwnerRepository} interface.
@@ -105,7 +106,7 @@ public class JdbcOwnerRepositoryImpl implements OwnerRepository {
                     ParameterizedBeanPropertyRowMapper.newInstance(Owner.class)
             );
         } catch (EmptyResultDataAccessException ex) {
-            throw new ObjectRetrievalFailureException(Owner.class, new Integer(id));
+            throw new ObjectRetrievalFailureException(Owner.class, id);
         }
         loadPetsAndVisits(owner);
         return owner;

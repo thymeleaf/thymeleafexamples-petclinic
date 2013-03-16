@@ -16,10 +16,10 @@
 
 package org.springframework.samples.petclinic.util;
 
+import java.util.Collection;
+
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.samples.petclinic.model.BaseEntity;
-
-import java.util.Collection;
 
 /**
  * Utility methods for handling entities. Separate from the BaseEntity class mainly because of dependency on the
@@ -49,7 +49,7 @@ public abstract class EntityUtils {
                 return entity;
             }
         }
-        throw new ObjectRetrievalFailureException(entityClass, new Integer(entityId));
+        throw new ObjectRetrievalFailureException(entityClass, entityId);
     }
 
 }
