@@ -455,8 +455,8 @@
 		      <version>2.0</version>     
 		      <configuration>          
 		        <server>tomcat-development-server</server>
-		        <port>9966</port>
-		        <path>/thymeleafexamples-petclinic</path>
+		        <port>8080</port>
+		        <path>/petclinic</path>
 		      </configuration>
 		    </plugin> 
         </plugins>
@@ -504,4 +504,38 @@
         </pluginManagement>
     </build>
 
+    
+    <profiles>
+      
+      <profile>
+        <id>build-dist</id>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>make-assembly-dist</id>
+                  <phase>package</phase>
+                  <goals>
+                    <goal>attached</goal>
+                  </goals>
+                  <configuration>
+                    <descriptors>
+                      <descriptor>${basedir}/src/assembly/sources.xml</descriptor>
+                    </descriptors>
+                    <appendAssemblyId>true</appendAssemblyId>
+                    <finalName>${project.groupId}-${project.artifactId}-${project.version}</finalName>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+        
+    </profiles>
+    
+    
 </project>
