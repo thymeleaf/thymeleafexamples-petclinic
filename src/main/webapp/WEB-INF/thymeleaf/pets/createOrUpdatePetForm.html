@@ -53,8 +53,8 @@
         Pet
     </h2>
 
-    <form th:object="${pet}" action="../owners/ownerDetails.html" th:method="${pet['new']} ? 'post' : 'put'"
-               class="form-horizontal">
+    <form th:object="${pet}" th:action="'#'" action="../owners/ownerDetails.html" 
+          th:method="${pet['new']} ? 'post' : 'put'" class="form-horizontal">
         <div class="control-group" id="owner">
             <label class="control-label">Owner </label>
 
