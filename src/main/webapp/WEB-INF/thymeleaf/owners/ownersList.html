@@ -25,8 +25,8 @@
     
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
           th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}" 
-		  rel="stylesheet"></link>
-		  
+          rel="stylesheet"></link>
+          
 </head>
 
 <body>
@@ -48,21 +48,21 @@
             <div class="navbar-inner">
                 <ul class="nav">
                     <li style="width: 100px;"><a 
-					    href="../welcome.html" th:href="@{/}"><i 
-						class="icon-home"></i>Home</a></li>
+                        href="../welcome.html" th:href="@{/}"><i 
+                        class="icon-home"></i>Home</a></li>
                     <li style="width: 130px;"><a 
-					    href="../owners/findOwners.html" th:href="@{/owners/find.html}"><i
-						class="icon-search"></i>Find owners</a></li>
+                        href="../owners/findOwners.html" th:href="@{/owners/find.html}"><i
+                        class="icon-search"></i>Find owners</a></li>
                     <li style="width: 140px;"><a 
-					    href="../vets/vetList.html" th:href="@{/vets.html}"><i
-						class="icon-th-list"></i>Veterinarians</a></li>
+                        href="../vets/vetList.html" th:href="@{/vets.html}"><i
+                        class="icon-th-list"></i>Veterinarians</a></li>
                     <li style="width: 90px;"><a 
-					    href="../exception.html" th:href="@{/oups.html}" 
-						title="trigger a RuntimeException to see how it is handled"><i
-						class="icon-warning-sign"></i>Error</a></li>
+                        href="../exception.html" th:href="@{/oups.html}" 
+                        title="trigger a RuntimeException to see how it is handled"><i
+                        class="icon-warning-sign"></i>Error</a></li>
                     <li style="width: 80px;"><a 
-					    href="#" title="not available yet. Work in progress!!"><i 
-						class=" icon-question-sign"></i>Help</a></li>
+                        href="#" title="not available yet. Work in progress!!"><i 
+                        class=" icon-question-sign"></i>Help</a></li>
                 </ul>
             </div>
         </div>
@@ -82,12 +82,12 @@
                 <th style="width: 100px;">Pets</th>
             </tr>
         </thead>
-		<tbody>
+        <tbody>
             <tr th:each="owner : ${selections}">
                 <td>
                     <a href="ownerDetails.html"
-					   th:href="@{'/owners/' + ${owner.id}}" 
-					   th:text="${owner.firstName + ' ' + owner.lastName}">[firstname lastname]</a>
+                       th:href="@{'/owners/' + ${owner.id}}" 
+                       th:text="${owner.firstName + ' ' + owner.lastName}">[firstname lastname]</a>
                 </td>
                 <td th:text="${owner.address}">[address]</td>
                 <td th:text="${owner.city}">[city]</td>
@@ -98,7 +98,7 @@
                     </span>
                 </td>
             </tr>
-		</tbody>
+        </tbody>
     </table>    
 
     
@@ -115,7 +115,7 @@
             <td align="right">
                <img src="../../../resources/images/springsource-logo.png"
                     th:src="@{/resources/images/springsource-logo.png}" 
-					alt="Sponsored by SpringSource" />
+                    alt="Sponsored by SpringSource" />
             </td>
         </tr>
         
