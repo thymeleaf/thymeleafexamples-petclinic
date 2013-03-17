@@ -2,86 +2,127 @@
 
 <html lang="en">
 
-
 <head th:substituteby="fragments/headTag :: headTag">
+    
+    <!-- ============================================================================ -->
+    <!-- This <head> is only used for static prototyping purposes (natural templates) -->
+    <!-- and is therefore entirely optionl, as this markup fragment will be included  -->
+    <!-- from "fragments.html" at runtime.                                            -->
+    <!-- ============================================================================ -->
+        
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>PetClinic :: a Spring Framework demonstration</title>
 
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
-        th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}" rel="stylesheet"/>
+          th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}" rel="stylesheet"/>
     <link href="../../../resources/css/petclinic.css"
-        th:href="@{/resources/css/petclinic.css}" rel="stylesheet"/>
+          th:href="@{/resources/css/petclinic.css}" rel="stylesheet"/>
     
-    <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
-        th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
+            th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
-        th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
+            th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
     
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
-        th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}" rel="stylesheet"></link>
+          th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}" 
+		  rel="stylesheet"></link>
+		  
 </head>
 
 <body>
+
 <div class="container">
+
     <div th:include="fragments/bodyHeader" th:remove="tag">
     
+        <!-- =========================================================================== -->
+        <!-- This div is only used for static prototyping purposes (natural templates)   -->
+        <!-- and is therefore entirely optionl, as this markup fragment will be included -->
+        <!-- from "fragments.html" at runtime.                                           -->
+        <!-- =========================================================================== -->
+    
         <img th:src="@{/resources/images/banner-graphic.png}" 
-            src="../../../resources/images/banner-graphic.png"/>
+             src="../../../resources/images/banner-graphic.png"/>
         
         <div class="navbar" style="width: 601px;">
             <div class="navbar-inner">
                 <ul class="nav">
-                    <li style="width: 100px;"><a href="../welcome.html" th:href="@{/}"><i class="icon-home"></i>Home</a></li>
-                    <li style="width: 130px;"><a href="../owners/findOwners.html" th:href="@{/owners/find.html}"><i class="icon-search"></i>Find owners</a></li>
-                    <li style="width: 140px;"><a href="../vets/vetList.html" th:href="@{/vets.html}"><i class="icon-th-list"></i>Veterinarians</a></li>
-                    <li style="width: 90px;"><a href="../exception.html" th:href="@{/oups.html}" title="trigger a RuntimeException to see how it is handled"><i class="icon-warning-sign"></i>Error</a></li>
-                    <li style="width: 80px;"><a href="#" title="not available yet. Work in progress!!"><i class=" icon-question-sign"></i>Help</a></li>
+                    <li style="width: 100px;"><a 
+					    href="../welcome.html" th:href="@{/}"><i 
+						class="icon-home"></i>Home</a></li>
+                    <li style="width: 130px;"><a 
+					    href="../owners/findOwners.html" th:href="@{/owners/find.html}"><i
+						class="icon-search"></i>Find owners</a></li>
+                    <li style="width: 140px;"><a 
+					    href="../vets/vetList.html" th:href="@{/vets.html}"><i
+						class="icon-th-list"></i>Veterinarians</a></li>
+                    <li style="width: 90px;"><a 
+					    href="../exception.html" th:href="@{/oups.html}" 
+						title="trigger a RuntimeException to see how it is handled"><i
+						class="icon-warning-sign"></i>Error</a></li>
+                    <li style="width: 80px;"><a 
+					    href="#" title="not available yet. Work in progress!!"><i 
+						class=" icon-question-sign"></i>Help</a></li>
                 </ul>
             </div>
         </div>
             
-            
     </div>
+    
 
     <h2>Owners</h2>
 
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th style="width: 150px;">Name</th>
-            <th style="width: 200px;">Address</th>
-            <th>City</th>
-            <th>Telephone</th>
-            <th style="width: 100px;">Pets</th>
-        </tr>
+            <tr>
+                <th style="width: 150px;">Name</th>
+                <th style="width: 200px;">Address</th>
+                <th>City</th>
+                <th>Telephone</th>
+                <th style="width: 100px;">Pets</th>
+            </tr>
         </thead>
-        <tr th:each="owner : ${selections}">
-            <td>
-                <a th:href="@{'/owners/' + ${owner.id}}" href="ownerDetails.html" th:text="${owner.firstName + ' ' + owner.lastName}">[firstname lastname]</a>
-            </td>
-            <td th:text="${owner.address}">[address]</td>
-            <td th:text="${owner.city}">[city]</td>
-            <td th:text="${owner.telephone}">[telephone]</td>
-            <td>
-                <span th:remove="tag" th:each="pet : ${owner.pets}" th:text="${pet.name}">
+		<tbody>
+            <tr th:each="owner : ${selections}">
+                <td>
+                    <a href="ownerDetails.html"
+					   th:href="@{'/owners/' + ${owner.id}}" 
+					   th:text="${owner.firstName + ' ' + owner.lastName}">[firstname lastname]</a>
+                </td>
+                <td th:text="${owner.address}">[address]</td>
+                <td th:text="${owner.city}">[city]</td>
+                <td th:text="${owner.telephone}">[telephone]</td>
+                <td>
+                    <span th:each="pet : ${owner.pets}" th:text="${pet.name}" th:remove="tag">
                        [pet name]
-                </span>
-            </td>
-        </tr>
-        
+                    </span>
+                </td>
+            </tr>
+		</tbody>
     </table>    
+
     
     <table th:substituteby="fragments/footer :: footer" class="footer">
+    
+        <!-- =========================================================================== -->
+        <!-- This table section is only used for static prototyping purposes (natural    -->
+        <!-- templates) and is therefore entirely optionl, as this markup fragment will  -->
+        <!-- be included from "fragments.html" at runtime.                               -->
+        <!-- =========================================================================== -->
+        
         <tr>
             <td></td>
             <td align="right">
                <img src="../../../resources/images/springsource-logo.png"
-                th:src="@{/resources/images/springsource-logo.png}" alt="Sponsored by SpringSource" />
+                    th:src="@{/resources/images/springsource-logo.png}" 
+					alt="Sponsored by SpringSource" />
             </td>
         </tr>
+        
     </table>
 
 </div>
+
 </body>
 
 </html>
