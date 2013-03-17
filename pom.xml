@@ -392,25 +392,6 @@
              <version>${aspectj.version}</version>
              <scope>runtime</scope>
          </dependency>
- 
-
-        <!-- Dandelion -->
-        <dependency>
-            <groupId>com.github.dandelion</groupId>
-            <artifactId>datatables-jsp</artifactId>
-            <version>${dandelion.datatables.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>com.github.dandelion</groupId>
-            <artifactId>datatables-export-itext</artifactId>
-            <version>${dandelion.datatables.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>com.github.dandelion</groupId>
-            <artifactId>datatables-servlet2</artifactId>
-            <version>${dandelion.datatables.version}</version>
-         </dependency>
-         
          
        </dependencies>
 
