@@ -87,14 +87,14 @@
                 <td>
                     <a href="ownerDetails.html"
                        th:href="@{'/owners/' + ${owner.id}}" 
-                       th:text="${owner.firstName + ' ' + owner.lastName}">[firstname lastname]</a>
+                       th:text="${owner.firstName + ' ' + owner.lastName}">Mary Smith</a>
                 </td>
-                <td th:text="${owner.address}">[address]</td>
-                <td th:text="${owner.city}">[city]</td>
-                <td th:text="${owner.telephone}">[telephone]</td>
+                <td th:text="${owner.address}">45, Oxford Street</td>
+                <td th:text="${owner.city}">Cambridge</td>
+                <td th:text="${owner.telephone}">555-555-555</td>
                 <td>
                     <span th:each="pet : ${owner.pets}" th:text="${pet.name}" th:remove="tag">
-                       [pet name]
+                       Rob
                     </span>
                 </td>
             </tr>
