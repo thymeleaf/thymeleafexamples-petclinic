@@ -70,7 +70,7 @@
         <webjars-bootstrap.version>2.3.0</webjars-bootstrap.version>
         <webjars-jquery-ui.version>1.9.2</webjars-jquery-ui.version>
         <webjars-jquery.version>1.9.0</webjars-jquery.version>
-        <dandelion.datatables.version>0.8.7</dandelion.datatables.version>
+        <dandelion.datatables.version>0.8.10</dandelion.datatables.version>
       
         <mysql.version>5.1.22</mysql.version>
         
@@ -331,6 +331,24 @@
             <artifactId>jquery</artifactId>
             <version>${webjars-jquery.version}</version>
         </dependency>
+        
+        <!-- Dandelion-Datatables -->
+        <dependency>
+            <groupId>com.github.dandelion</groupId>
+            <artifactId>datatables-thymeleaf</artifactId>
+            <version>${dandelion.datatables.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.dandelion</groupId>
+            <artifactId>datatables-export-itext</artifactId>
+            <version>${dandelion.datatables.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>com.github.dandelion</groupId>
+            <artifactId>datatables-servlet2</artifactId>
+            <version>${dandelion.datatables.version}</version>
+         </dependency>
+        
         <!-- Test Artifacts -->
         <dependency>
             <groupId>org.springframework</groupId>
