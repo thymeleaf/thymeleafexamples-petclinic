@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
 
 <head th:substituteby="fragments/headTag :: headTag">
     
@@ -72,7 +72,7 @@
 
     <h2>Owners</h2>
 
-    <table class="table table-striped">
+    <table id="owners" dt:table="true" dt:cdn="true" class="table table-striped" dt:theme="bootstrap2" dt:paginate="false" dt:info="false" dt:export="pdf">
         <thead>
             <tr>
                 <th style="width: 150px;">Name</th>
@@ -82,9 +82,9 @@
                 <th style="width: 100px;">Pets</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody dt:pdf:class="btn btn-small">
             <tr th:each="owner : ${selections}">
-                <td>
+                <td dt:pdf="${owner.firstName + ' ' + owner.lastName}">
                     <a href="ownerDetails.html"
                        th:href="@{'/owners/' + ${owner.id}}" 
                        th:text="${owner.firstName + ' ' + owner.lastName}">Mary Smith</a>
@@ -92,7 +92,7 @@
                 <td th:text="${owner.address}">45, Oxford Street</td>
                 <td th:text="${owner.city}">Cambridge</td>
                 <td th:text="${owner.telephone}">555-555-555</td>
-                <td>
+                <td dt:pdf="${#strings.listJoin(owner.pets, ' ')}">
                     <span th:each="pet : ${owner.pets}" th:text="${pet.name}" th:remove="tag">
                        Rob&nbsp;
                     </span>
