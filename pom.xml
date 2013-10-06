@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>thymeleafexamples</groupId>
     <artifactId>petclinic</artifactId>
-    <version>20130923</version>
+    <version>20131006</version>
 
     <name>petclinic</name>
     <packaging>war</packaging>
