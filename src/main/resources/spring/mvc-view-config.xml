@@ -38,19 +38,19 @@
         <property name="viewResolvers">
         	<list>
             
-			    <!-- Used here for 'xml' and 'atom' views  -->
-			    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+                <!-- Used here for 'xml' and 'atom' views  -->
+                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
                     <property name="order" value="1"/>
                 </bean>
                 
                 <bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
                     <property name="templateEngine" ref="templateEngine" />
                     <property name="order" value="2"/>
-<!--                     <property name="viewNames"  -->
-<!--                               value="bodyHeader,footer,headTag,welcome,exception,vets/vetList,                                 -->
-<!--                                owners/ownersList,owners/ownerDetails,owners/findOwners,   -->
-<!--                                  owners/createOrUpdateOwnerForm,pets/createOrUpdatePetForm, -->
-<!--                                  pets/createOrUpdateVisitForm"/>    -->
+                    <!-- We need to set exclusions because Content Negotiation tries to resolve from -->
+                    <!-- Thymeleaf even if a specific view bean (of a different class) is already    -->
+                    <!-- found, which might cause exceptions (e.g. ThymeleafView does not have a     -->
+                    <!-- 'marshaller' property).                                                     -->
+                    <property name="excludedViewNames" value="*.xml" />
                 </bean>
         
                  <!-- Default viewClass: JSTL view (JSP with html output) -->
@@ -81,10 +81,10 @@
     </bean>
 
     <!-- Renders an Atom feed of the visits. Used by the BeanNameViewResolver  -->
-    <bean id="vets/vetList.atom" class="org.springframework.samples.petclinic.web.VetsAtomView"/>
+    <bean name="vets/vetList.atom" class="org.springframework.samples.petclinic.web.VetsAtomView"/>
 
     <!-- Renders an XML view. Used by the BeanNameViewResolver  -->
-    <bean id="vets/vetList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
+    <bean name="vets/vetList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
         <property name="marshaller" ref="marshaller"/>
     </bean>
 
