@@ -60,8 +60,28 @@ public class Owner extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets;
 
+    public Owner(String firstName, String lastName, String address, String city, String telephone) {
+		super.setFirstName(firstName);
+		super.setLastName(lastName);
+		this.address = address;
+		this.city = city;
+		this.telephone = telephone;
+	}
 
-    public String getAddress() {
+//    public Owner(String firstName, String lastName, String address, String city, String telephone, Set<Pet> pets) {
+//		super.setFirstName(firstName);
+//		super.setLastName(lastName);
+//		this.address = address;
+//		this.city = city;
+//		this.telephone = telephone;
+//		this.pets = pets;
+//	}
+
+	public Owner() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getAddress() {
         return this.address;
     }
 
