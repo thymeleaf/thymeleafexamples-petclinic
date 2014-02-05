@@ -10,11 +10,12 @@
 
     <context-param>
         <param-name>spring.profiles.active</param-name>
-        <param-value>jdbc</param-value>
+        <param-value>mybatis-spring</param-value>
         <!-- Available profiles:
 		<param-value>jdbc</param-value>
 		<param-value>jpa</param-value> (in the case of plain JPA)
 		<param-value>spring-data-jpa</param-value> (in the case of Spring Data JPA)
+		<param-value>mybatis-spring</param-value> (in the case of MyBatis Spring)
 		-->
     </context-param>
 
@@ -24,7 +25,7 @@
 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/business-config.xml, classpath:spring/tools-config.xml</param-value>
+        <param-value>classpath:spring/business-config.xml, classpath:spring/tools-config.xml, classpath:spring/mybatis-config.xml</param-value>
     </context-param>
 
     <listener>
