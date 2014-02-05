@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.samples.petclinic.repository.mybatis.mapper.OwnerMapper">
+
+  <select id="findByLastName" resultMap="ownerResultMap">
+      SELECT DISTINCT first_name, last_name, address, city, telephone, pets.id as petId
+		FROM owners left join pets on owners.id = pets.owner_id 
+		WHERE owners.last_name LIKE #{lastName}
+  </select>
+
+  <select id="findById" resultMap="ownerResultMap">
+      SELECT owners FROM owners left join owners.pets WHERE owners.id = #{id}
+  </select>
+  
+  <insert id="save" parameterType="org.springframework.samples.petclinic.model.Owner">
+	INSERT INTO owners(first_name, last_name, address, city, telephone)
+	VALUES (#{firstName}, #{lastName}, #{address}, #{city}, #{telephone}) 
+  </insert>
+  
+  <resultMap type="org.springframework.samples.petclinic.model.Owner" id="ownerResultMap">
+  	<constructor>
+ 		<!-- idArg column="id" javaType="Integer"/ -->
+ 		<arg column="first_name" javaType="String"/>
+ 		<arg column="last_name" javaType="String"/>
+ 		<arg column="address" javaType="String"/>
+ 		<arg column="city" javaType="String"/>
+ 		<arg column="telephone" javaType="String"/>
+	</constructor>
+  	<association property="pets" column="petId" select="listPets" />
+  </resultMap>
+
+  <resultMap type="org.springframework.samples.petclinic.model.Pet" id="petResultMap">
+  	<constructor>
+ 		<!-- idArg column="id" javaType="Integer"/ -->
+ 		<arg column="name" javaType="String"/>
+ 		<arg column="birth_date" javaType="Date"/>
+ 		<arg column="type_id" javaType="Integer"/>
+ 		<arg column="owner_id" javaType="Integer"/>
+	</constructor>
+  </resultMap>
+  
+	<!--
+	La subselect es un poco más ligera que el outer join, y elimina algunos problemas de rows duplicadas
+	-->
+	<select id="listPets" parameterType="Integer" resultMap="petResultMap">
+		<![CDATA[
+		SELECT id, name, birth_date, type_id, owner_id
+		FROM pets WHERE id = #{petId}
+		]]>
+	</select>
+  
+</mapper>

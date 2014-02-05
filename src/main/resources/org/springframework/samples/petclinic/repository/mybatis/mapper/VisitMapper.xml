@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.samples.petclinic.repository.mybatis.mapper.VisitMapper">
+
+  <select id="findByPetId" resultMap="visitResultMap">
+      SELECT visit FROM Visit v where v.pets.id= #{id}
+  </select>
+  
+  <insert id="save" parameterType="org.springframework.samples.petclinic.model.Visit">
+	INSERT INTO Visit(visit_date, description)
+	VALUES (#{visit_date}, #{description}) 
+  </insert>
+
+  <resultMap type="org.springframework.samples.petclinic.model.Pet" id="visitResultMap">
+  	<constructor>
+ 		<idArg column="pet_id" javaType="Integer"/>
+ 		<arg column="visit_date" javaType="Date"/>
+ 		<arg column="description" javaType="String"/>
+	</constructor>
+  </resultMap>
+  
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.samples.petclinic.repository.mybatis.mapper.PetMapper">
+
+  <select id="findPetTypes" resultMap="petTypeResultMap">
+      SELECT ptype FROM types ptype ORDER BY ptype.name
+  </select>
+
+  <select id="findById" resultMap="petResultMap">
+      SELECT pets FROM Pets pets WHERE pets.id = #{id}
+  </select>
+  
+  <insert id="save" parameterType="org.springframework.samples.petclinic.model.Pet">
+	INSERT INTO pets(name, birth_date, type_id, owner_id)
+	VALUES (#{name}, #{birth_date}, #{type_id}, #{owner_id}) 
+  </insert>
+  
+  <resultMap type="org.springframework.samples.petclinic.model.PetType" id="petTypeResultMap">
+  	<constructor>
+ 		<idArg column="id" javaType="Integer"/>
+ 		<arg column="name" javaType="String"/>
+	</constructor>
+  </resultMap>
+
+    <resultMap type="org.springframework.samples.petclinic.model.Pet" id="petResultMap">
+  	<constructor>
+ 		<idArg column="id" javaType="Integer"/>
+ 		<arg column="name" javaType="String"/>
+ 		<arg column="birth_date" javaType="Date"/>
+ 		<arg column="type_id" javaType="Integer"/>
+ 		<arg column="owner_id" javaType="Integer"/>
+	</constructor>
+  </resultMap>
+  
+</mapper>
