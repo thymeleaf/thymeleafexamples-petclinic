@@ -22,6 +22,11 @@
 		
 		<!-- Thymeleaf -->
         <thymeleaf.version>2.1.0.RELEASE</thymeleaf.version>
+        
+        <!-- MyBatis -->
+        <mybatis.version>3.2.4</mybatis.version>
+        <mybatis.spring.version>1.2.2</mybatis.spring.version>
+        <mybatis.spring.cache.version>1.0.4</mybatis.spring.cache.version>
 
     	<!--  Java EE / Java SE dependencies -->
         <jsp.version>2.2</jsp.version>
@@ -91,23 +96,23 @@
           	<scope>provided</scope>
         </dependency>
 		<dependency>
-                        <groupId>javax.servlet.jsp</groupId>
-                        <artifactId>jsp-api</artifactId>
-                        <version>2.1</version>
-                        <scope>provided</scope>
-                </dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
 
-                <dependency>
-                        <groupId>org.glassfish.web</groupId>
-                        <artifactId>jstl-impl</artifactId>
-                        <version>1.2</version>
-                        <exclusions>
-                                <exclusion>
-                                        <groupId>javax.servlet</groupId>
-                                        <artifactId>servlet-api</artifactId>
-                                </exclusion>
-                        </exclusions>
-                </dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jstl-impl</artifactId>
+			<version>1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
@@ -125,8 +130,20 @@
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring3</artifactId>
             <version>${thymeleaf.version}</version>
-        </dependency>		
-		
+        </dependency>
+        
+        <!-- MYBATIS -->
+        <dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis.spring.version}</version>
+		</dependency>
+				
 		<!-- SPRING, SPRING, SPRINGITY SPRING -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
