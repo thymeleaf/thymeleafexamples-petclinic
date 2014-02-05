@@ -13,5 +13,33 @@
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="1"
            memoryStoreEvictionPolicy="LRU"/>
+    
+    <!-- Nombres de las caches para  -->
+	<cache name="org.springframework.samples.petclinic.repository.mybatis.mapper.OwnerMapper"
+		   maxElementsInMemory="300"
+           eternal="true"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           overflowToDisk="false" />
+	<cache name="org.springframework.samples.petclinic.repository.mybatis.mapper.PetMapper"
+		   maxElementsInMemory="300"
+           eternal="true"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           overflowToDisk="false" />
+	<cache name="org.springframework.samples.petclinic.repository.mybatis.mapper.VetMapper"
+		   maxElementsInMemory="300"
+           eternal="true"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           overflowToDisk="false" />
+	<cache name="org.springframework.samples.petclinic.repository.mybatis.mapper.VisitMapper"
+		   maxElementsInMemory="300"
+           eternal="true"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           overflowToDisk="false" />
+		
+    
 
 </ehcache>
