@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.samples.petclinic.repository.mybatis.mapper.TodoMapper">
+
+  <select id="findAll" resultMap="todoTypeResultMap">
+      SELECT id, content, position, done FROM todo
+  </select>
+
+  <resultMap type="org.springframework.samples.petclinic.model.Todo" id="todoTypeResultMap">
+  	<id property="id" column="id" />
+  	<result property="content" column="content"/>
+  	<result property="order" column="position"/>
+  	<result property="done" column="done"/>
+  </resultMap>
+  
+</mapper>
