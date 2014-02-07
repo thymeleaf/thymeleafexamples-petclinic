@@ -27,6 +27,9 @@
         <mybatis.version>3.2.4</mybatis.version>
         <mybatis.spring.version>1.2.2</mybatis.spring.version>
         <mybatis.spring.cache.version>1.0.4</mybatis.spring.cache.version>
+        
+        <!-- Jackson -->
+		<jackson.version>2.3.0</jackson.version>
 
     	<!--  Java EE / Java SE dependencies -->
         <jsp.version>2.2</jsp.version>
@@ -142,6 +145,19 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>${mybatis.spring.version}</version>
+		</dependency>
+		
+		<!-- JACKSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 				
 		<!-- SPRING, SPRING, SPRINGITY SPRING -->
