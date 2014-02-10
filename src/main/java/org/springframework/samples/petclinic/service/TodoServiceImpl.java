@@ -26,26 +26,22 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public Todo findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return todoRepository.findById(id);
 	}
 
 	@Override
 	public Todo create(Todo todo) {
-		// TODO Auto-generated method stub
-		return null;
+		return todoRepository.create(todo);
 	}
 
 	@Override
 	public void update(Todo todo) {
-		// TODO Auto-generated method stub
-		
+		todoRepository.update(todo);
 	}
 
 	@Override
 	public void remove(String id) {
-		// TODO Auto-generated method stub
-		
+		todoRepository.remove(id);
 	}
 
 }

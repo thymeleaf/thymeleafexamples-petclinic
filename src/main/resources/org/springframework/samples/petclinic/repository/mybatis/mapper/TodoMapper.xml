@@ -7,6 +7,28 @@
       SELECT id, content, position, done FROM todo
   </select>
 
+  <select id="findById" resultMap="todoTypeResultMap">
+      SELECT id, content, position, done FROM todo WHERE id = #{id}
+  </select>
+
+  <insert id="insert" parameterType="org.springframework.samples.petclinic.model.Todo" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO todo(id,content,position,done) 
+      VALUES(#{id}, #{content}, #{order}, #{done})
+  </insert>
+  
+  <update id="save" parameterType='org.springframework.samples.petclinic.model.Todo'>
+	    UPDATE todo
+	    SET
+	     content = #{content},
+	     position = #{order},
+	     done = #{done}
+	    WHERE id = #{id}
+  </update>
+	 
+  <delete id="remove" parameterType="String">
+		DELETE FROM todo WHERE id = #{id}
+  </delete>
+  
   <resultMap type="org.springframework.samples.petclinic.model.Todo" id="todoTypeResultMap">
   	<id property="id" column="id" />
   	<result property="content" column="content"/>
