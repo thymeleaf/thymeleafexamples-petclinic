@@ -10,7 +10,7 @@
 
     <context-param>
         <param-name>spring.profiles.active</param-name>
-        <param-value>mybatis-spring</param-value>
+        <param-value>jdbc</param-value>
         <!-- Available profiles:
 		<param-value>jdbc</param-value>
 		<param-value>jpa</param-value> (in the case of plain JPA)

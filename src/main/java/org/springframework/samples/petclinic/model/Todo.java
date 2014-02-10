@@ -1,7 +1,12 @@
 package org.springframework.samples.petclinic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import org.springframework.data.annotation.Id;
 
+@Entity
+@Table(name = "todo")
 public class Todo {
     
     @Id
