@@ -6,6 +6,8 @@
 // Load the application once the DOM is ready, using `jQuery.ready`:
 $(function(){
 
+  tpl.loadTemplates(['item-template','stats-template'], function() {});
+	
   // Todo Model
   // ----------
 
@@ -81,7 +83,7 @@ $(function(){
     tagName:  "li",
 
     // Cache the template function for a single item.
-    template: _.template($('#item-template').html()),
+    template: _.template(tpl.get('item-template')),
 
     // The DOM events specific to an item.
     events: {
@@ -161,7 +163,7 @@ $(function(){
     el: $("#todoapp"),
 
     // Our template for the line of statistics at the bottom of the app.
-    statsTemplate: _.template($('#stats-template').html()),
+    statsTemplate: _.template(tpl.get('stats-template')),
 
     // Delegated events for creating new items, and clearing completed ones.
     events: {
