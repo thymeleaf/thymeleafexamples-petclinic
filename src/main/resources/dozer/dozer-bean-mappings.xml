@@ -1,0 +1,39 @@
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<mapping>
+		<class-a>org.springframework.samples.petclinic.model.Vets</class-a>
+		<class-b>org.springframework.samples.petclinic.model.MyVets</class-b>
+	</mapping>
+	
+	<mapping>
+	    <class-a>org.springframework.samples.petclinic.model.Pet</class-a>
+	    <class-b>org.springframework.samples.petclinic.model.MyPetsAndOwners</class-b>
+	    <field>
+	       <a>owner.id</a>
+	       <b>ownerId</b>
+	    </field>
+	    <field>
+	       <a>name</a>
+	       <b>petName</b>
+	    </field> 
+	</mapping>
+	
+	<mapping>
+	    <class-a>org.springframework.samples.petclinic.model.Owner</class-a>
+	    <class-b>org.springframework.samples.petclinic.model.MyPetsAndOwners</class-b>
+	    <field>
+	       <a>id</a>
+	       <b>ownerId</b>
+	    </field>
+	    
+	    <field>
+	       <a>firstName</a>
+	       <b>ownerFirstName</b>
+	    </field>      
+	</mapping>
+	
+	
+	
+	
+</mappings>
