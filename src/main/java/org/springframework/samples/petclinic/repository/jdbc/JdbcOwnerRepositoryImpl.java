@@ -33,6 +33,7 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
+import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
@@ -161,6 +162,14 @@ public class JdbcOwnerRepositoryImpl implements OwnerRepository {
             loadPetsAndVisits(owner);
         }
     }
+
+
+	@Override
+	public Collection<Owner> all() throws DataAccessException {
+        Collection<Owner> owners = this.namedParameterJdbcTemplate.query( "SELECT id, first_name, last_name, address, city, telephone FROM owners",
+        		 ParameterizedBeanPropertyRowMapper.newInstance(Owner.class));
+        return owners;
+	}
 
 
 }

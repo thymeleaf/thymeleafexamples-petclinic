@@ -15,11 +15,13 @@
  */
 package org.springframework.samples.petclinic.repository.mybatis;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.repository.PetRepository;
@@ -56,5 +58,11 @@ public class MyBatisPetRepositoryImpl implements PetRepository {
     public void save(Pet pet) {
     	petMapper.save(pet);
     }
+
+	@Override
+	public Collection<Pet> all() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

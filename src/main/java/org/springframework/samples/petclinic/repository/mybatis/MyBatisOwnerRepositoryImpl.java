@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.repository.mybatis;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.mybatis.mapper.OwnerMapper;
@@ -50,5 +51,11 @@ public class MyBatisOwnerRepositoryImpl implements OwnerRepository {
     public void save(Owner owner) {
     	ownerMapper.save(owner);
     }
+
+	@Override
+	public Collection<Owner> all() throws DataAccessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
