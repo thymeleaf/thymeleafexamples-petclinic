@@ -76,5 +76,7 @@ public interface OwnerRepository {
      */
     void save(Owner owner) throws DataAccessException;
 
+	Collection<Owner> all()throws DataAccessException;
+
 
 }
