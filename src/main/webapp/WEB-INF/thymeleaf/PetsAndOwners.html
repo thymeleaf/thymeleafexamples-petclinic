@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Backbone Demo: PetsAndOwner</title>
+            
+  </head>
+
+  <body>
+
+    <!-- Todo App Interface -->
+	<h2>PetsAndOwner</h2>
+    <table class="table table-stripped" style="width:600px;">
+        <thead>
+        <tr>
+        	<th>Owner Id</th>
+            <th>Owner Name</th>
+            <th>Pet Name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="PetsAndOwner : ${list}">
+                <td th:text="${PetsAndOwner.ownerId}"></td>
+                <td th:text="${PetsAndOwner.ownerFirstName}"></td>
+                <td th:text="${PetsAndOwner.petName}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+  </body>
+
+</html>
