@@ -46,7 +46,7 @@ public class MyPetsAndOwnersController {
 
 		Collection<MyPetsAndOwners> listOwnersMyPetsAndOwners = new ArrayList<MyPetsAndOwners>();
 		
-		listPetsMyPetsAndOwners.addAll(AbstractConverter.map(mapper, listOwner, MyPetsAndOwners.class));
+		listOwnersMyPetsAndOwners.addAll(AbstractConverter.map(mapper, listOwner, MyPetsAndOwners.class));
 //		listOwnersMyPetsAndOwners.clear();
 		
 		Collection<MyPetsAndOwners> listAll = new ArrayList<MyPetsAndOwners>();
