@@ -2,17 +2,26 @@ package org.springframework.samples.petclinic.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.dozer.Mapper;
 import org.springframework.util.CollectionUtils;
 
 
-public abstract class AbstractConverter<T, V> implements Converter<T, V> {
+public class AbstractConverter<T, V> implements Converter<T, V> {
 
 	 private Mapper mapper;
 	 private Class<T> beanClass;
 	 private Class<V> myBeanClass;
 	 
+	public static <T, U> List<U> map(final Mapper mapper, final Collection<T> source, final Class<U> destType) {
+
+		final List<U> dest = new ArrayList();
+		for (T element : source) {
+			dest.add(mapper.map(element, destType));
+		}
+		return dest;
+	}	 
 	 
 	 public AbstractConverter(Mapper mapper, Class<T> beanClass, Class<V> myBeanClass) {
 		  this.mapper = mapper;
