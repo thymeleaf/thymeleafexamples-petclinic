@@ -2,24 +2,14 @@ package org.springframework.samples.petclinic.web;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.samples.petclinic.model.MyPetsAndOwners;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.PetType;
-import org.springframework.samples.petclinic.model.Vet;
-import org.springframework.samples.petclinic.model.Vets;
-import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
-import org.springframework.samples.petclinic.service.OwnersConverter;
-import org.springframework.samples.petclinic.service.PetsConverter;
-import org.springframework.samples.petclinic.util.EntityUtils;
+import org.springframework.samples.petclinic.util.AbstractConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,16 +21,12 @@ public class MyPetsAndOwnersController {
 
     private final ClinicService clinicService;
     
-    private final PetsConverter petsConverter;
-    
-    private final OwnersConverter ownersConverter;
-
+    private final Mapper mapper;
 	
 	@Autowired
-	public MyPetsAndOwnersController(ClinicService clinicService, PetsConverter petsConverter, OwnersConverter ownersConverter){
+	public MyPetsAndOwnersController(ClinicService clinicService, org.dozer.Mapper mapper){
 		this.clinicService = clinicService;
-		this.petsConverter = petsConverter;
-		this.ownersConverter = ownersConverter;
+		this.mapper = mapper;
 	}
 	
 	
@@ -52,12 +38,16 @@ public class MyPetsAndOwnersController {
 		
 		Collection<Owner> listOwner = new ArrayList<Owner>();
 		listOwner = clinicService.allOwner();
-		
+
 		Collection<MyPetsAndOwners> listPetsMyPetsAndOwners = new ArrayList<MyPetsAndOwners>();
-		listPetsMyPetsAndOwners.addAll(petsConverter.convertMyBeanList(listPets));
-		
+
+		listPetsMyPetsAndOwners.addAll(AbstractConverter.map(mapper, listPets, MyPetsAndOwners.class));
+//		listPetsMyPetsAndOwners.clear();
+
 		Collection<MyPetsAndOwners> listOwnersMyPetsAndOwners = new ArrayList<MyPetsAndOwners>();
-		listOwnersMyPetsAndOwners.addAll(ownersConverter.convertMyBeanList(listOwner));
+		
+		listPetsMyPetsAndOwners.addAll(AbstractConverter.map(mapper, listOwner, MyPetsAndOwners.class));
+//		listOwnersMyPetsAndOwners.clear();
 		
 		Collection<MyPetsAndOwners> listAll = new ArrayList<MyPetsAndOwners>();
 		
