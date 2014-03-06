@@ -30,6 +30,18 @@ public class TodoClient {
 
 	private final static String todoServiceUrl = "http://localhost:8080/petclinic/api/todo";
 
+	public Todo find_one() {
+		ResponseEntity<Todo> todos = null;
+		try {
+			todos = (ResponseEntity) this.restTemplate.getForEntity(new URI(todoServiceUrl+"/1"), Todo.class);
+		} catch (RestClientException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return todos.getBody();
+	}
+
 	public List<Todo> findAll_basic() {
 		ResponseEntity<Todo> todos = null;
 		try {
@@ -57,6 +69,10 @@ public class TodoClient {
 	public static void main(final String[] args) {
 		final ApplicationContext appContext = new ClassPathXmlApplicationContext("client.xml");
 		final TodoClient restClient = (TodoClient)appContext.getBean("todoRestClient");
+		
+		final Todo todoOne = restClient.find_one();
+		final List<Todo> todosBasic = restClient.findAll_basic();
+		
 		final List<Todo> todos = restClient.findAll_3_2();
 		for (Iterator iterator = todos.iterator(); iterator.hasNext();) {
 			Todo todo = (Todo) iterator.next();
