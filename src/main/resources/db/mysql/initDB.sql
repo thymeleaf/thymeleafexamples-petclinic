@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS petclinic;
-GRANT ALL PRIVILEGES ON petclinic.* TO pc@localhost IDENTIFIED BY 'pc';
+GRANT ALL PRIVILEGES ON petclinic.* TO petclinic@localhost IDENTIFIED BY 'petclinic';
 
 USE petclinic;
 
@@ -57,4 +57,11 @@ CREATE TABLE IF NOT EXISTS visits (
   visit_date DATE,
   description VARCHAR(255),
   FOREIGN KEY (pet_id) REFERENCES pets(id)
+) engine=InnoDB;
+
+CREATE TABLE todo (
+  id		  INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,          
+  content	  VARCHAR(255),
+  position      INT(4) UNSIGNED NOT NULL,
+  done	      INT(1) UNSIGNED NOT NULL
 ) engine=InnoDB;

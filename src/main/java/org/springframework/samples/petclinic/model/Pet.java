@@ -17,6 +17,7 @@ package org.springframework.samples.petclinic.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -64,7 +65,25 @@ public class Pet extends NamedEntity {
     private Set<Visit> visits;
 
 
-    public void setBirthDate(DateTime birthDate) {
+    public Pet() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    public Pet(String name, DateTime birthDate, PetType type, Owner owner) {
+		super.setName(name);
+		this.birthDate = birthDate;
+		this.type = type;
+		this.owner = owner;
+	}
+
+    public Pet(String name, Date birthDate, Integer type, Integer owner) {
+		super.setName(name);
+		this.birthDate = new DateTime(birthDate.getTime());
+//		this.type = type;
+//		this.owner = owner;
+	}
+    
+	public void setBirthDate(DateTime birthDate) {
         this.birthDate = birthDate;
     }
 

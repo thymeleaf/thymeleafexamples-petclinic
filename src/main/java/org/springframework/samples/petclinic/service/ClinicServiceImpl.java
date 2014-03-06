@@ -71,6 +71,12 @@ public class ClinicServiceImpl implements ClinicService {
     public Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException {
         return ownerRepository.findByLastName(lastName);
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Owner> allOwner() throws DataAccessException {
+        return ownerRepository.all();
+    }
 
     @Override
     @Transactional
@@ -104,6 +110,11 @@ public class ClinicServiceImpl implements ClinicService {
     public Collection<Vet> findVets() throws DataAccessException {
         return vetRepository.findAll();
     }
+
+	@Override
+	public Collection<Pet> allPet() throws DataAccessException {
+		return petRepository.all();
+	}
 
 
 }

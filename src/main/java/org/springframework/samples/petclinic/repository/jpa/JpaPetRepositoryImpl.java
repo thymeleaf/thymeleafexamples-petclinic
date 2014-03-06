@@ -15,11 +15,13 @@
  */
 package org.springframework.samples.petclinic.repository.jpa;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.repository.PetRepository;
@@ -55,5 +57,11 @@ public class JpaPetRepositoryImpl implements PetRepository {
     public void save(Pet pet) {
         this.em.merge(pet);
     }
+
+	@Override
+	public Collection<Pet> all() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

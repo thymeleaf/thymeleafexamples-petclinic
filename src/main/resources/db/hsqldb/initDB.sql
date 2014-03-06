@@ -5,6 +5,7 @@ DROP TABLE visits IF EXISTS;
 DROP TABLE pets IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE owners IF EXISTS;
+DROP TABLE todo IF EXISTS;
 
 
 CREATE TABLE vets (
@@ -62,3 +63,11 @@ CREATE TABLE visits (
 );
 ALTER TABLE visits ADD CONSTRAINT fk_visits_pets FOREIGN KEY (pet_id) REFERENCES pets (id);
 CREATE INDEX visits_pet_id ON visits (pet_id);
+
+
+CREATE TABLE todo (
+  id          INTEGER IDENTITY PRIMARY KEY,
+  content	  VARCHAR(255),
+  position    INTEGER NOT NULL,
+  done	      INTEGER NOT NULL 
+);

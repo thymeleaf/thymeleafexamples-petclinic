@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Backbone Demo: Todos</title>
+    <link href="../../resources/todos.css"
+          th:href="@{/resources/todos.css}" rel="stylesheet" />
+    <script src="../../resources/lib/json2.js"
+            th:src="@{/resources/lib/json2.js}"></script>
+
+    <script src="../../resources/lib/jquery-1.7.1.js"
+            th:src="@{/resources/lib/jquery-1.7.1.js}"></script>
+    <script src="../../resources/lib/underscore-1.1.6.js"
+            th:src="@{/resources/lib/underscore-1.1.6.js}"></script>
+    <script src="../../resources/lib/backbone-0.5.3.js"
+            th:src="@{/resources/lib/backbone-0.5.3.js}"></script>
+    
+	<script src="../../resources/templates/load.js"
+            th:src="@{/resources/templates/load.js}"></script>            
+
+    <script src="../../resources/todos.js"
+            th:src="@{/resources/todos.js}"></script>
+            
+  </head>
+
+  <body>
+
+    <!-- Todo App Interface -->
+
+    <div id="todoapp">
+
+      <div class="title">
+        <h1>Todos</h1>
+      </div>
+
+      <div class="content">
+
+        <div id="create-todo">
+          <input id="new-todo" placeholder="What needs to be done?" type="text" />
+          <span class="ui-tooltip-top" style="display:none;">Press Enter to save this task</span>
+        </div>
+
+        <div id="todos">
+          <ul id="todo-list"></ul>
+        </div>
+
+        <div id="todo-stats"></div>
+
+      </div>
+
+    </div>
+
+    <ul id="instructions">
+      <li>Double-click to edit a todo.</li>
+    </ul>
+
+    <div id="credits">
+      BackboneJS exemple application created by <a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a><br />
+      Spring 3.1 backend created by <a href="http://twitter.com/sdeleuze">S&eacute;bastien Deleuze</a>
+    </div>
+
+  </body>
+
+</html>

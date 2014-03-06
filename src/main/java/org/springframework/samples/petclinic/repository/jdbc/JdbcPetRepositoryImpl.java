@@ -15,6 +15,8 @@
  */
 package org.springframework.samples.petclinic.repository.jdbc;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -129,5 +131,31 @@ public class JdbcPetRepositoryImpl implements PetRepository {
                 .addValue("type_id", pet.getType().getId())
                 .addValue("owner_id", pet.getOwner().getId());
     }
+
+	@Override
+	public Collection<Pet> all() {
+		List<Pet> pets = new ArrayList<Pet>();
+		List<JdbcPet> jdbcPets;
+		jdbcPets = this.namedParameterJdbcTemplate.query(
+                    "SELECT id, name, birth_date, type_id, owner_id FROM pets",
+                    new JdbcPetRowMapper());
+		
+        for(JdbcPet pet : jdbcPets){   
+        	Owner owner = this.ownerRepository.findById(pet.getOwnerId());
+            owner.addPet(pet);		
+        	
+	        pet.setType(EntityUtils.getById(findPetTypes(), PetType.class, pet.getTypeId()));
+	
+	        List<Visit> visits = this.visitRepository.findByPetId(pet.getId());
+	        for (Visit visit : visits) {
+	            pet.addVisit(visit);
+	        }
+	        pets.add(pet);
+        }
+        
+        return pets;
+		
+	}
+
 
 }
