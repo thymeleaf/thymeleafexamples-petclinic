@@ -8,6 +8,7 @@
 
     <name>petclinic</name>
     <packaging>war</packaging>
+    <!-- Configuring Webhook -->
 
     <properties>
     	    
