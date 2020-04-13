@@ -25,7 +25,7 @@
         <include>LICENSE.txt</include>
         <include>README.markdown</include>
         <include>BUILD.txt</include>
-        <include>NOTICE.txt</include>
+        <include>notice.txt</include>
         <include>pom.xml</include>
       </includes>
     </fileSet>
