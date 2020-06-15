@@ -37,7 +37,7 @@
         
         <!-- Bean validation -->
         <validation.version>1.0.0.GA</validation.version>
-        <hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.3.5.Final</hibernate-validator.version>
 		
 		<!-- Database access -->
         <commons-dbcp.version>1.4</commons-dbcp.version>
