@@ -32,7 +32,7 @@
         <jaxb-impl.version>2.2.7-b53</jaxb-impl.version>
 		
 		<!-- Hibernate / JPA -->
-        <hibernate.version>4.1.9.Final</hibernate.version>
+        <hibernate.version>5.4.24.Final</hibernate.version>
         <hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
         
         <!-- Bean validation -->
