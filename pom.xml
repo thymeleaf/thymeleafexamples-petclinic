@@ -6,7 +6,7 @@
     <artifactId>petclinic</artifactId>
     <version>20140513</version>
 
-    <name>petclinic</name>
+    <name>petclinic</nam>
     <packaging>war</packaging>
 
     <properties>
